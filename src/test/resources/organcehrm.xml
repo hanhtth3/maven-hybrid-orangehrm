@@ -3,7 +3,7 @@
 <suite name="OrangeHRM - UI Automation Test" verbose="1" >
     <test name="Run on Firefox browser" >
         <classes>
-            <class name="orangehrm.users.Login_01_DRY" />
+            <class name="ui.orangehrm.users.Login_01_DRY" />
         </classes>
     </test>
 
