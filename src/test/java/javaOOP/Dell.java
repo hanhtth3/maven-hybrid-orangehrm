@@ -1,4 +1,4 @@
 package javaOOP;
 
-public class Dell extends Computer{
+public class Dell {
 }
