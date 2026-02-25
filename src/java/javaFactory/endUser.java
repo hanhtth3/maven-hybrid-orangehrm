@@ -1,40 +1,38 @@
 package javaFactory;
 
 public class endUser {
-    public public static void main(String[] args) {
-        Honda hon = new Honda();
+    public  static void main(String[] args) {
+        javaFactory.Honda hon = new javaFactory.Honda();
         hon.viewCar();
         hon.drivingCar();
 
-        Huyndai huy = new Huyndai();
+        javaFactory.Huyndai huy = new javaFactory.Huyndai();
         huy.viewCar();
         huy.drivingCar();
 
-        Ford fod = new Ford();
+        javaFactory.Ford fod = new javaFactory.Ford();
         fod.viewCar();
         fod.drivingCar();
 
-        Toyota toy = new Toyota();
+        javaFactory.Toyota toy = new javaFactory.Toyota();
         toy.viewCar();
         toy.drivingCar();
     }
-
-
 }
-public Car getCar (String carName){
-    Car car = null;
+public javaFactory.Car getCar (String carName){
+    javaFactory.Car car = null;
     switch (carName){
-        case "Honda";
-            car = new Honda();
+        case "Honda":
+            car = new javaFactory.Car();
             break;
-        case "Huydai";
-            car = new Huyndai();
+        case "Huydai":
+            car = new javaFactory.Car();
             break;
         case "Ford";
-            car = new Ford();
+            car = new javaFactory.Car();
             break;
         case "Toyota";
-            car = new Toyota();
+            car = new javaFactory.Car();
             break;
         default:
         throw new Exception("Car name is not suport");
