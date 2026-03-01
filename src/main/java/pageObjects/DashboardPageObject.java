@@ -12,5 +12,6 @@ public class DashboardPageObject extends BasePage {
     public void clickToPIMModule() {
     waitElementClickable(driver, DashboardPageUI.PIM_MODULE);
     clickToElement(driver,DashboardPageUI.PIM_MODULE);
+    return PageGeneratorGeneric.getPage(EmployeeListPageObject.class,driver);
     }
 }
