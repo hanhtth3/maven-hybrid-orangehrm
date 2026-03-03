@@ -24,9 +24,4 @@ public class PersonalDetailPageObject extends BasePage {
         return getElementDomProperty(driver,PersonalDetailPageUI.LAST_NAME_TEXTBOX,"value");
     }
 
-    public ContactDetailPageObject openContactDetailPage(){
-        //Wait
-        //Click
-        return PageGeneratorGeneric.getPage(ContactDetailPageObject.class,driver);
-    }
 }

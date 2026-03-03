@@ -2,11 +2,11 @@ package pageObjects;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.PersonalDetailPageUI;
 
-public class ContactDetailPageObject extends BasePage {
+public class DependentsPageObject extends BasePage {
     private WebDriver driver;
-    public ContactDetailPageObject(WebDriver driver){
+
+    public DependentsPageObject(WebDriver driver) {
         this.driver = driver;
     }
 }

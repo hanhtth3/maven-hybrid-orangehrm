@@ -1,15 +1,14 @@
 package core;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.*;
 import pageUIs.BasePageUI;
 
-import java.security.Key;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
@@ -328,6 +327,35 @@ public class BasePage {
     public boolean isLoadingSpinnerDisappear (WebDriver driver) {
       return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
     }
+
+    public PersonalDetailPageObject openPersonnalDetailPage(WebDriver driver)
+    {
+        waitElementClickable(driver, BasePageUI.PERSONAL_DETAILS_LINK);
+        clickToElement(driver,BasePageUI.PERSONAL_DETAILS_LINK);
+        return PageGeneratorGeneric.getPage(PersonalDetailPageObject.class,driver);
+    }
+
+    public DependentsPageObject openDependentsPage(WebDriver driver)
+    {
+        waitElementClickable(driver, BasePageUI.DEPENDENT_LINK);
+        clickToElement(driver,BasePageUI.DEPENDENT_LINK);
+        return PageGeneratorGeneric.getPage(DependentsPageObject.class,driver);
+    }
+
+    public ContactDetailPageObject openContactDetailPage(WebDriver driver)
+    {
+        waitElementClickable(driver, BasePageUI.CONTACT_DETAIL_LINK);
+        clickToElement(driver,BasePageUI.CONTACT_DETAIL_LINK);
+        return PageGeneratorGeneric.getPage(ContactDetailPageObject.class,driver);
+    }
+
+    public JobPageObject openJobPage(WebDriver driver)
+    {
+        waitElementClickable(driver, BasePageUI.JOB_LINK);
+        clickToElement(driver,BasePageUI.JOB_LINK);
+        return PageGeneratorGeneric.getPage(JobPageObject.class,driver);
+    }
+
     private final int SHORT_TIME = 10;
     private final int LONG_TIME = 30;
 }

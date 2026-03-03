@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class Login_06_Page_Manager_IV extends BaseTest {
+public class Login_07_Switch_Page extends BaseTest {
     @Parameters ({"appUrl", "browser"})
     @BeforeClass
     public void beforeClass(String appURL,String browserName){
@@ -47,6 +47,18 @@ public class Login_06_Page_Manager_IV extends BaseTest {
         Assert.assertEquals(personalDetailPage.getLastNameTextboxValue(),employeeLastName);
         Assert.assertEquals(personalDetailPage.getEmployeeIDTextboxValue(),employeeID);
     }
+    @Test
+    public void Employee_02_Switch_Page(){
+        contactDetailPage = personalDetailPage.openContactDetailPage(driver);
+
+        jobPage = contactDetailPage.openJobPage(driver);
+
+        dependentsPage = jobPage.openDependentsPage(driver);
+
+        personalDetailPage = dependentsPage.openPersonnalDetailPage(driver);
+
+        jobPage = personalDetailPage.openJobPage(driver);
+    }
 
     @AfterClass
     public void  afterClass(){
@@ -58,5 +70,8 @@ public class Login_06_Page_Manager_IV extends BaseTest {
     private EmployeeListPageObject employeeListPage;
     private LoginPageObject loginPage;
     private PersonalDetailPageObject personalDetailPage;
+    private ContactDetailPageObject contactDetailPage;
+    private JobPageObject jobPage;
+    private DependentsPageObject dependentsPage;
     private String employeeID,adminUser, adminPassword, employeeFirstName, employeeLastName;
 }

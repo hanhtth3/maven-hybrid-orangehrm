@@ -58,6 +58,5 @@ public class Login_06_Page_Manager_III extends BaseTest {
     private EmployeeListPageObject employeeListPage;
     private LoginPageObject loginPage;
     private PersonalDetailPageObject personalDetailPage;
-    private String employeeID;
-    private String adminUser, adminPassword, employeeFirstName, employeeLastName;
+    private String employeeID,adminUser, adminPassword, employeeFirstName, employeeLastName;
 }
