@@ -5,7 +5,7 @@
     <test name="Run on FIREFOX browser" >
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
-            <class name="ui.orangehrm.users.Login_05_Page_Factory" />
+            <class name="com.orangehrm.Level_08_Page_Navigator" />
         </classes>
     </test>
 </suite>

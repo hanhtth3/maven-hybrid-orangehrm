@@ -6,8 +6,11 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.*;
-import pageUIs.BasePageUI;
+import pageObjects.PageGenerator;
+import pageObjects.openCart.admin.AdminLoginPO;
+import pageObjects.openCart.user.UserHomePO;
+import pageObjects.openCart.user.UserLoginPO;
+import pageUIs.orangeHRM.EditNavigatorPageUI.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -328,34 +331,33 @@ public class BasePage {
       return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
     }
 
-    public PersonalDetailPageObject openPersonnalDetailPage(WebDriver driver)
-    {
-        waitElementClickable(driver, BasePageUI.PERSONAL_DETAILS_LINK);
-        clickToElement(driver,BasePageUI.PERSONAL_DETAILS_LINK);
-        return PageGeneratorGeneric.getPage(PersonalDetailPageObject.class,driver);
+    public UserLoginPO clickToLogoutLinkAtUserSite(WebDriver driver) {
+        //Wait clickable logout site
+        //Click to logout site
+        //Wait clickable continue button
+        //Click to continue button
+        return PageGenerator.getPage(UserLoginPO.class,driver);
     }
 
-    public DependentsPageObject openDependentsPage(WebDriver driver)
-    {
-        waitElementClickable(driver, BasePageUI.DEPENDENT_LINK);
-        clickToElement(driver,BasePageUI.DEPENDENT_LINK);
-        return PageGeneratorGeneric.getPage(DependentsPageObject.class,driver);
+    public AdminLoginPO clickToLogoutLinkAtAdminSite(WebDriver driver) {
+        //Wait clickable logout site
+        //Click to logout site
+        //Wait clickable continue button
+        //Click to continue button
+        return PageGenerator.getPage(AdminLoginPO.class,driver);
     }
 
-    public ContactDetailPageObject openContactDetailPage(WebDriver driver)
-    {
-        waitElementClickable(driver, BasePageUI.CONTACT_DETAIL_LINK);
-        clickToElement(driver,BasePageUI.CONTACT_DETAIL_LINK);
-        return PageGeneratorGeneric.getPage(ContactDetailPageObject.class,driver);
+    public AdminLoginPO OpenAdminSite(WebDriver driver,String adminURL) {
+        openPageUrl(driver,adminURL);
+        return PageGenerator.getPage(AdminLoginPO.class,driver);
     }
 
-    public JobPageObject openJobPage(WebDriver driver)
-    {
-        waitElementClickable(driver, BasePageUI.JOB_LINK);
-        clickToElement(driver,BasePageUI.JOB_LINK);
-        return PageGeneratorGeneric.getPage(JobPageObject.class,driver);
+    public UserHomePO openUserSite(WebDriver driver,String userURL) {
+        openPageUrl(driver,userURL);
+        return PageGenerator.getPage(UserLoginPO.class,driver);
     }
 
     private final int SHORT_TIME = 10;
     private final int LONG_TIME = 30;
+
 }
