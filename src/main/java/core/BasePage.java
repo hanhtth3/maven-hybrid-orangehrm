@@ -10,7 +10,7 @@ import pageObjects.PageGenerator;
 import pageObjects.openCart.admin.AdminLoginPO;
 import pageObjects.openCart.user.UserHomePO;
 import pageObjects.openCart.user.UserLoginPO;
-import pageUIs.orangeHRM.EditNavigatorPageUI.BasePageUI;
+import pageUIs.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -332,29 +332,27 @@ public class BasePage {
     }
 
     public UserLoginPO clickToLogoutLinkAtUserSite(WebDriver driver) {
-        //Wait clickable logout site
-        //Click to logout site
-        //Wait clickable continue button
-        //Click to continue button
+        waitElementClickable(driver,BasePageUI.USER_MY_ACCOUNT_HEADER);
+        clickToElement(driver,BasePageUI.USER_MY_ACCOUNT_HEADER);
+        waitElementClickable(driver,BasePageUI.USER_LOGOUT_LINK_ITEM);
+        clickToElement(driver,BasePageUI.USER_LOGOUT_LINK_ITEM);
         return PageGenerator.getPage(UserLoginPO.class,driver);
     }
 
     public AdminLoginPO clickToLogoutLinkAtAdminSite(WebDriver driver) {
-        //Wait clickable logout site
-        //Click to logout site
-        //Wait clickable continue button
-        //Click to continue button
+        waitElementClickable(driver,BasePageUI.ADMIN_LOGOUT_LINK_ITEM);
+        clickToElement(driver,BasePageUI.ADMIN_LOGOUT_LINK_ITEM);
         return PageGenerator.getPage(AdminLoginPO.class,driver);
     }
 
-    public AdminLoginPO OpenAdminSite(WebDriver driver,String adminURL) {
+    public AdminLoginPO openAdminSite(WebDriver driver, String adminURL) {
         openPageUrl(driver,adminURL);
         return PageGenerator.getPage(AdminLoginPO.class,driver);
     }
 
     public UserHomePO openUserSite(WebDriver driver,String userURL) {
         openPageUrl(driver,userURL);
-        return PageGenerator.getPage(UserLoginPO.class,driver);
+        return PageGenerator.getPage(UserHomePO.class,driver);
     }
 
     private final int SHORT_TIME = 10;
