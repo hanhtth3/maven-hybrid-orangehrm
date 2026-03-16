@@ -21,4 +21,8 @@ public class AdminDashboardPO extends BasePage {
         return PageGenerator.getPage(AdminCustomerPO.class,driver);
     }
 
+    public boolean isDashboardPageDisplay() {
+        waitElementVisible(driver,AdminDashBoardPageUI.DASHBOARD_HEADER_TEXT);
+        return isElementDisplay(driver,AdminDashBoardPageUI.DASHBOARD_HEADER_TEXT);
+    }
 }

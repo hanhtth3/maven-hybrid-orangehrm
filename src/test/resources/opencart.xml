@@ -7,7 +7,7 @@
     <test name="Run on FIREFOX browser" >
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
-            <class name="com.opencart.Level_09_Switch_Url" />
+            <class name="com.opencart.Level_09_Switch_Url_Role" />
         </classes>
     </test>
 </suite>

@@ -345,9 +345,8 @@ public class BasePage {
         return PageGenerator.getPage(AdminLoginPO.class,driver);
     }
 
-    public AdminLoginPO openAdminSite(WebDriver driver, String adminURL) {
+    public void openAdminSite(WebDriver driver, String adminURL) {
         openPageUrl(driver,adminURL);
-        return PageGenerator.getPage(AdminLoginPO.class,driver);
     }
 
     public UserHomePO openUserSite(WebDriver driver,String userURL) {
@@ -355,6 +354,23 @@ public class BasePage {
         return PageGenerator.getPage(UserHomePO.class,driver);
     }
 
+    public UserHomePO openHomeLogo (WebDriver driver){
+        waitElementClickable(driver,BasePageUI.USER_HOME_LOGO);
+        clickToElement(driver,BasePageUI.USER_HOME_LOGO);
+        return PageGenerator.getPage(UserHomePO.class,driver);
+    }
+
+    public void openUrlByNewTab(WebDriver driver,String url){
+        driver.switchTo().newWindow(WindowType.TAB).get(url);
+    }
+
+    public void openUrlByNewWindow(WebDriver driver,String url){
+        driver.switchTo().newWindow(WindowType.WINDOW).get(url);
+    }
+
+    public void getCurrentWindowID(WebDriver driver){
+        return driver.getWindowHandles()
+    }
     private final int SHORT_TIME = 10;
     private final int LONG_TIME = 30;
 
