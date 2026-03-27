@@ -2,7 +2,7 @@ package pageObjects.openCart.user;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.openCart.user.user.UserMyAccountPageUI;
+import pageUIs.openCart.user.UserMyAccountPageUI;
 
 public class UserMyAccountPO extends BasePage {
     private WebDriver driver;

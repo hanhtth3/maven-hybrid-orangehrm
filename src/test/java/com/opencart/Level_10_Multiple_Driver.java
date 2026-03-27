@@ -35,7 +35,7 @@ public class Level_10_Multiple_Driver extends BaseTest {
         userHomePage = PageGenerator.getPage(UserHomePO.class,userDriver);
 
         adminDriver = getBrowserDriver(adminURL, browserName);
-        adminLoginPage = PageGenerator.getPage(AdminLoginPO.class, adminDriver)
+        adminLoginPage = PageGenerator.getPage(AdminLoginPO.class, adminDriver);
     }
 
     @Test
@@ -69,8 +69,8 @@ public class Level_10_Multiple_Driver extends BaseTest {
 
         Assert.assertTrue(userMyAccountPO.isMyAccountPageDislpayed());
 
-        userMyAccountPO.openAdminSite(driver,adminURL);
-        adminDashboardPage = PageGenerator.getPage(AdminDashboardPO.class,driver);
+        userMyAccountPO.openAdminSite(adminDriver,adminURL);
+        adminDashboardPage = PageGenerator.getPage(AdminDashboardPO.class,adminDriver);
 
         Assert.assertTrue(adminDashboardPage.isDashboardPageDisplay());
 
@@ -79,7 +79,7 @@ public class Level_10_Multiple_Driver extends BaseTest {
     @Test
     public void Opencart_03_Multiple_Tab(){
         userHomePage.clickToMyaccuntAtFooter();
-        userLoginPage = PageGenerator.getPage(UserLoginPO.class,driver);
+        userLoginPage = PageGenerator.getPage(UserLoginPO.class,userDriver);
 
         userRegisterPage = userLoginPage.clickToContinueButton();
 
@@ -93,30 +93,30 @@ public class Level_10_Multiple_Driver extends BaseTest {
 
         Assert.assertTrue(userRegisterPage.isSuccesMesageDisplay());
 
-        userRegisterPage.openUrlByNewTab(driver,adminURL);
-        userWindowID = userRegisterPage.getCurrentWindowID(driver);
+        userRegisterPage.openUrlByNewTab(adminDriver,adminURL);
+        userWindowID = userRegisterPage.getCurrentWindowID(userDriver);
 
-        userHomePage.openAdminSite(driver,adminURL);
-        adminLoginPage = PageGenerator.getPage(AdminLoginPO.class,driver);
+        userHomePage.openAdminSite(adminDriver,adminURL);
+        adminLoginPage = PageGenerator.getPage(AdminLoginPO.class,adminDriver);
 
         adminLoginPage.enterToUsername(adminUser);
         adminLoginPage.enterToPassword(adminPassword);
         adminDashboardPage = adminLoginPage.clickLoginToButton();
 
         adminCustomerPage = adminDashboardPage.openCustomerPage();
-        adminCustomerPage.switchToWindowByID(driver,adminWindowID);
+        adminCustomerPage.switchToWindowByID(adminDriver,adminWindowID);
 
-        userRegisterPage = PageGenerator.getPage(UserRegisterPO.class,driver);
+        userRegisterPage = PageGenerator.getPage(UserRegisterPO.class,userDriver);
 
-        userHomePage = userRegisterPage.openHomeLogo(driver);
+        userHomePage = userRegisterPage.openHomeLogo(userDriver);
 
         userHomePage.clickToMyaccuntAtFooter();
-        userMyAccountPO = PageGenerator.getPage(UserMyAccountPO.class,driver);
+        userMyAccountPO = PageGenerator.getPage(UserMyAccountPO.class,userDriver);
 
         Assert.assertTrue(userMyAccountPO.isMyAccountPageDislpayed());
 
-        userMyAccountPO.switchToWindowByID(driver,userURL);
-        adminCustomerPage = PageGenerator.getPage(AdminCustomerPO.class,driver)[]
+        userMyAccountPO.switchToWindowByID(userDriver,userURL);
+        adminCustomerPage = PageGenerator.getPage(AdminCustomerPO.class,adminDriver);
 
         Assert.assertTrue(adminCustomerPage.isCustomerPageDisplay());
     }

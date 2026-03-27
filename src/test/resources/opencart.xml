@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="OpenCart - UI Automation Test" verbose="1" >
-    <parameter name="userUrl" value="http://localhost:8080/opencart/"></parameter>
-    <parameter name="adminUrl" value="http://localhost:8080/opencart/admin/"></parameter>
+    <parameter name="userUrl" value="http://localhost/opencart/upload/"></parameter>
+    <parameter name="adminUrl" value="http://localhost/opencart/upload/admin/"></parameter>
 
     <test name="Run on FIREFOX browser" >
         <parameter name="browser" value="Firefox"></parameter>

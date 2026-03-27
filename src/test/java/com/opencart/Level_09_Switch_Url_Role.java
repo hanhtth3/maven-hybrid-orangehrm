@@ -157,7 +157,7 @@ public class Level_09_Switch_Url_Role extends BaseTest {
         Assert.assertTrue(userMyAccountPO.isMyAccountPageDislpayed());
 
         userMyAccountPO.switchToWindowByID(driver,userURL);
-        adminCustomerPage = PageGenerator.getPage(AdminCustomerPO.class,driver)[]
+        adminCustomerPage = PageGenerator.getPage(AdminCustomerPO.class,driver);
 
         Assert.assertTrue(adminCustomerPage.isCustomerPageDisplay());
     }

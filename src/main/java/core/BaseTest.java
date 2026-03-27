@@ -43,8 +43,7 @@ public class BaseTest {
     }
 
     protected void closeBrowser(WebDriver dirver) {
-        if(!(null == driver)){
-            driver.quit();
+        if(null != driver){driver.quit();}
     }
     protected int getRandomNumber() {
         return new Random().nextInt(999999);

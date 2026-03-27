@@ -3,7 +3,7 @@ package pageObjects.openCart.user;
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
-import pageUIs.openCart.user.user.UserRegisterPageUI;
+import pageUIs.openCart.user.UserRegisterPageUI;
 
 public class UserRegisterPO extends BasePage {
     WebDriver driver;
