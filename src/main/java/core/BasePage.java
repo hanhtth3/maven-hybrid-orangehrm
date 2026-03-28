@@ -143,6 +143,10 @@ public class BasePage {
         return driver.findElement(getByLocator(locatorType));
     }
 
+    public WebElement getWebElement(WebDriver driver,String locator, String...restValue){
+        return driver.findElement(getByLocator(castParameter(locator,restValue)));
+    }
+
     public List <WebElement> getListElement(WebDriver driver, String locatoType){
         return driver.findElements(getByLocator(locatoType));
     }
@@ -502,10 +506,20 @@ public class BasePage {
         return String.format(locator, (Object[]) restValue);
     }
 
+    public void uploadMultipleFiles(WebDriver driver, String...fileName){
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        String fullFileName = "";
+        for(String file: fileName){
+            fullFileName = fullFileName + fileName +"\n"
+        }
+        fullFileName = fullFileName.trim();
+        getWebElement(driver,BasePageUI.UP_LOAD_FILE_TYPE).sendKeys(fullFileName.trim());
+    }
+
     public String getCurrentWindowID(WebDriver driver){
         return driver.getWindowHandle();
     }
-    private final int SHORT_TIME = 10;
-    private final int LONG_TIME = 30;
+    private final int SHORT_TIME = GlobalConstants.SHORT_TIMEOUT;
+    private final int LONG_TIME = GlobalConstants.LONG_TIMEOUT;
 
 }
