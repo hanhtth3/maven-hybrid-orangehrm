@@ -1,11 +1,15 @@
 package core;
 
+import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.Random;
 
@@ -37,7 +41,7 @@ public class BaseTest {
         return driver;
     }
     protected void closeBrowser(){
-        if(!(null == driver)){
+        if(null != driver){
             driver.quit();
         }
     }
@@ -47,5 +51,71 @@ public class BaseTest {
     }
     protected int getRandomNumber() {
         return new Random().nextInt(999999);
+    }
+
+    protected boolean verifyTrue(boolean condition) {
+        boolean pass = true;
+        try {
+            Assert.assertTrue(condition);
+        } catch (Throwable e) {
+            pass = false;
+
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return pass;
+    }
+
+    protected boolean verifyFalse(boolean condition) {
+        boolean pass = true;
+        try {
+            Assert.assertFalse(condition);
+        } catch (Throwable e) {
+            pass = false;
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return pass;
+    }
+
+    protected boolean verifyEquals(Object actual, Object expected) {
+        boolean pass = true;
+        try {
+            Assert.assertEquals(actual, expected);
+        } catch (Throwable e) {
+            pass = false;
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return pass;
+    }
+
+    public WebDriver getDriver() {
+        return this.driver;
+    }
+    @BeforeSuite
+    public void deleteFileInReport() {
+        // Remove all file in ReportNG screenshot (image)
+        deleteAllFileInFolder("reportNGImage");
+
+        // Remove all file in Allure attachment (json file)
+        deleteAllFileInFolder("htmlAllure");
+    }
+
+    public void deleteAllFileInFolder(String folderName) {
+        try {
+            String pathFolderDownload = GlobalConstants.PROJECT_PATH + File.separator + folderName;
+            File file = new File(pathFolderDownload);
+            File[] listOfFiles = file.listFiles();
+            if (listOfFiles.length != 0) {
+                for (int i = 0; i < listOfFiles.length; i++) {
+                    if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("environment.properties")) {
+                        new File(listOfFiles[i].toString()).delete();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
     }
 }

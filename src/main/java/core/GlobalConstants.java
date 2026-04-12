@@ -1,9 +1,12 @@
 package core;
 
+import java.io.File;
+
 public class GlobalConstants {
     // System Infor
     public static final String PROJECT_PATH = System.getProperty("user.dir");
     public static final String OS_NAME = System.getProperty("os.name");
+    public static final String JAVA_VERSION = System.getProperty("java.version");
 
     // App Infor User
     public static final String DEV_USER_URL = "http://dev.techpanda.org/";
@@ -23,23 +26,23 @@ public class GlobalConstants {
     public static final int LONG_TIMEOUT = 30;
 
     // Download/ Upload file
-    public static final String UPLOAD_PATH = PROJECT_PATH + "/uploadFiles/";
-    public static final String DOWNLOAD_PATH = PROJECT_PATH + "/downloadFiles/";
+    public static final String UPLOAD_PATH = PROJECT_PATH + File.separator+"uploadFiles"+File.separator;
+    public static final String DOWNLOAD_PATH = PROJECT_PATH + File.separator + "downloadFiles" +File.separator;
 
     // Retry Case Failed
     public static final int RETRY_NUMBER = 3;
 
     // Browser Logs/ Extension
-    public static final String BROWSER_LOG_PATH = PROJECT_PATH + "/browserLogs/";
-    public static final String BROWSER_EXTENSION_PATH = PROJECT_PATH + "/browserExtensions/";
+    public static final String BROWSER_LOG_PATH = PROJECT_PATH + File.separator+ "browserLogs"+ File.separator;
+    public static final String BROWSER_EXTENSION_PATH = PROJECT_PATH + File.separator+ "browserExtensions"+ File.separator;
 
     // HTML Report Folder
-    public static final String REPORTNG_PATH = PROJECT_PATH + "/htmlReportNG/";
-    public static final String EXTENT_PATH = PROJECT_PATH + "/htmlExtent/";
-    public static final String ALLURE_PATH = PROJECT_PATH + "/htmlAllure/";
+    public static final String REPORTNG_PATH = PROJECT_PATH + File.separator+ "htmlReportNG"+ File.separator;
+    public static final String EXTENT_PATH = PROJECT_PATH+ File.separator + "htmlExtent"+ File.separator;
+    public static final String ALLURE_PATH = PROJECT_PATH + File.separator+ "htmlAllure"+ File.separator;
 
     // Data Test/ Environment
-    public static final String DATA_TEST_PATH = PROJECT_PATH + "/dataTest/";
-    public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/environmentConfig/";
+    public static final String DATA_TEST_PATH = PROJECT_PATH + File.separator+ "dataTest"+ File.separator;
+    public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + File.separator+ "environmentConfig"+ File.separator;
 
 }

@@ -413,10 +413,14 @@ public class BasePage {
                 .until(ExpectedConditions.elementToBeClickable(getByLocator(locator)));
     }
 
+    public WebElement waitElementClickable (WebDriver driver,WebElement element){
+        return new WebDriverWait(driver,Duration.ofSeconds(LONG_TIME))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public WebElement waitElementClickable (WebDriver driver,String locator,String...restvalue){
         return new WebDriverWait(driver,Duration.ofSeconds(LONG_TIME))
-                .until(ExpectedConditions
-                .elementToBeClickable(getByLocator(castParameter(locator,restvalue))));
+                .until(ExpectedConditions.elementToBeClickable(getByLocator(castParameter(locator,restvalue))));
     }
 
     public boolean waitElementInvisible (WebDriver driver,String locator){
@@ -510,7 +514,7 @@ public class BasePage {
         String filePath = GlobalConstants.UPLOAD_PATH;
         String fullFileName = "";
         for(String file: fileName){
-            fullFileName = fullFileName + fileName +"\n"
+            fullFileName = fullFileName + filePath +file +"\n";
         }
         fullFileName = fullFileName.trim();
         getWebElement(driver,BasePageUI.UP_LOAD_FILE_TYPE).sendKeys(fullFileName.trim());
