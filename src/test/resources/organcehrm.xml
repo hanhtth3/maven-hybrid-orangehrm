@@ -3,15 +3,16 @@
 <suite name="OrangeHRM - UI Automation Test" verbose="1" >
     <listeners>
         <listener class-name="core.MethodListener"></listener>
+<!--        <listener class-name="jiraConfigs.JiraListener"></listener>-->
 <!--        <listener class-name="reportConfig.ExtentTestListener"></listener>-->
 <!--        <listener class-name="reportConfig.ChainTestReport"></listener>-->
-        <listener class-name="reportConfig.AllureTestListener"></listener>
+<!--       <listener class-name="reportConfig.AllureTestListener"></listener>-->
     </listeners>
     <parameter name="appUrl" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"></parameter>
     <test name="Run on FIREFOX browser" >
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
-            <class name="com.orangehrm.Level_16_Allure" />
+            <class name="com.orangehrm.Level_18_Pattern_Object" />
         </classes>
     </test>
 </suite>

@@ -45,4 +45,11 @@ public class GlobalConstants {
     public static final String DATA_TEST_PATH = PROJECT_PATH + File.separator+ "dataTest"+ File.separator;
     public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + File.separator+ "environmentConfig"+ File.separator;
 
+    public static final String JIRA_SITE_URL = "https://hanhtth3.atlassian.net/";
+
+    public static final String JIRA_USERNAME ="hanhtth3@gmail.com" ;
+
+    public static final String JIRA_API_KEY = "ATATT3xFfGF0QbgVfIto-r4hUiZKTYnBf2tRfIYMT52q__r6I-Det5-RkHbZ0hbgZAekXi8l7aDxsvL-qX0K6s7Tgr_FBYhcr217hbR88YbFd07SmY1hZa_Ft786FSGDgC3J524BkaNfsZeHq3HFR92GQShOz8SIhZdQANgbu9b9ct5V7x4CpTw=4E2D9582";
+
+    public static String JIRA_PROJECT_KEY="AUTOMATION" ;
 }
