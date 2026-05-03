@@ -16,7 +16,7 @@ import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
 
-public class Level_18_Pattern_Object extends BaseTest {
+public class Level_19_Element_Undisplayed extends BaseTest {
     @Parameters({"appUrl", "browser"})
     @BeforeClass
     public void beforeClass(String appURL, String browserName) {
@@ -41,6 +41,19 @@ public class Level_18_Pattern_Object extends BaseTest {
         verifyTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         dashboardPage.sleepInSecond(2);
 
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Admin"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"PIM"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Leave"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Time"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Recruitment"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"My Info"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Performance"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Dashboard"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Directory"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Maintenance"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Claim"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Buzz"));
+
         dashboardPage.clickToModuleByNameInMenuItem(driver, "PIM");
         employeeListPage = PageGenerator.getPage(EmployeeListPageObject.class, driver);
         verifyTrue(employeeListPage.isLoadingSpinnerDisappear(driver));
@@ -62,7 +75,7 @@ public class Level_18_Pattern_Object extends BaseTest {
         addEmployeePage.clickToButtonByText(driver, "Save");
         personalDetailPage = PageGenerator.getPage(PersonalDetailPageObject.class, driver);
 
-        verifyTrue(personalDetailPage.isToastMessageDisplayed(driver,"Successfully Updated"));
+        verifyTrue(personalDetailPage.isToastMessageDisplayed(driver,"Successfully Saved"));
 
         verifyTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
         personalDetailPage.sleepInSecond(2);
@@ -71,12 +84,34 @@ public class Level_18_Pattern_Object extends BaseTest {
         verifyEquals(personalDetailPage.getTextboxValueByName(driver, "lastName"), employeeFirstName);
         verifyEquals(personalDetailPage.getTextboxValueByLabel(driver, "employee ID", employeeID);
 
-        personalDetailPage.selectDropdownByLabel(driver,"Nationality","American");
+        //Logout
 
-        personalDetailPage.clickToRadioButton(driver,"Disabled");
-        personalDetailPage.clickToRadioButton(driver,"Enabled");
+        loginPage = personalDetailPage.clickLogoutOnTopMenu(driver);
 
-        personalDetailPage.clickToCheckboxByLabel(driver,"Create Login Details");
+        //Login bang quyen Employee vua tao ra
+        loginPage.enterToTextboxByLabel(driver,"Username",employeeUsername);
+        loginPage.enterToTextboxByLabel(driver,"Password",employeePassword);
+        loginPage.clickToButtonByText(driver,"Login");
+        dashboardPage = PageGenerator.getPage(DashboardPageObject.class,driver);
+
+        verifyTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
+        dashboardPage.sleepInSecond(2);
+
+        //Den man hinh DashBoard
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Leave"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Time"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"My Info"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Performance"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Dashboard"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Directory"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Claim"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Buzz"));
+
+        //Case 3: element khong hien thi tren UI va khong co trong DOM
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"Admin"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"PIM"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"Recruitment"));
+        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"Maintenance"));
 
     }
 

@@ -295,6 +295,24 @@ public class BasePage {
         return getWebElement(driver, castParameter(locator, restValue)).isDisplayed();
     }
 
+    private void overrideGlobalTimeout(WebDriver driver, long timeSecond){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeSecond));
+    }
+
+    public boolean isElementUndisplay(WebDriver driver,String locator, String...restValue){
+        overrideGlobalTimeout(driver,SHORT_TIME);
+        List<WebElement> elements = getListElement(driver,castParameter(locator,restValue));
+        overrideGlobalTimeout(driver,LONG_TIME);
+
+        if (elements.size()=0){
+            return true;
+        } else (elements.size()>0)&& !elements.get(0).isDisplayed(){
+            return true;
+        } else {
+            return  false;
+        }
+
+    }
     public boolean isElementSelected(WebDriver driver, String locator) {
         return getWebElement(driver, locator).isSelected();
     }
@@ -397,6 +415,11 @@ public class BasePage {
 
     public List<WebElement> waitListElementVisible(WebDriver driver, String locator, String... restValue) {
         return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIME))
+                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(castParameter(locator, restValue))));
+    }
+
+    public List<WebElement> waitListElementVisibleNotInDOM(WebDriver driver, String locator, String... restValue) {
+        return new WebDriverWait(driver, Duration.ofSeconds(SHORT_TIME))
                 .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(castParameter(locator, restValue))));
     }
 
@@ -561,6 +584,16 @@ public class BasePage {
         clickToElement(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
     }
 
+    public boolean isModuleByTextInMenuItemDisplayed(WebDriver driver, String moduleName) {
+        waitListElementVisibleNotInDOM(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
+        return isElementUndisplay(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
+    }
+
+    public boolean isModuleByTextInMenuItemUnDisplayed(WebDriver driver, String moduleName) {
+        waitElementVisible(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
+        return isElementDisplay(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
+    }
+
     public void selectDropdownByLabel(WebDriver driver, String labelName, String valueToSelect) {
         waitElementVisible(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, labelName);
         selectItemInTableDropdown(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, BasePageUI.CHILD_DROPDOWN_BY_LABEL, valueToSelect, labelName);
@@ -576,7 +609,7 @@ public class BasePage {
         sendKeyToElement(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, labelName);
     }
 
-    public void clickToCheckboxButton(WebDriver driver, String labelName) {
+    public void clickToCheckboxByLabel(WebDriver driver, String labelName) {
         waitElementClickable(driver, BasePageUI.CHECKBOX_BUTTON_BY_LABEL, labelName);
         sendKeyToElement(driver, BasePageUI.CHECKBOX_BUTTON_BY_LABEL, labelName);
     }
@@ -586,6 +619,5 @@ public class BasePage {
     }
     private final int SHORT_TIME = GlobalConstants.SHORT_TIMEOUT;
     private final int LONG_TIME = GlobalConstants.LONG_TIMEOUT;
-
 
 }

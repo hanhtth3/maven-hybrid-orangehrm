@@ -12,7 +12,9 @@ public class BasePageUI {
     public static final String CHILD_DROPDOWN_BY_LABEL = "Xpath=//label[text()='%s']/parent::div/folowing-sibling::div//div[@class='oxd-select-option']/span";
     public static final String TOAST_MESSAGE_BY_TEXT = "Xpath=//p[contains(@class,'odx-text-toast-message') and text()='%s')";
     public static final String RADIO_BUTTON_BY_LABEL = "Xpath=//label[text()='%s']/input";
-    public static final String CHECKBOX_BUTTON_BY_LABEL = "Xpath=//p[text()='%s']/folowing-sibling::div/input"
+    public static final String CHECKBOX_BUTTON_BY_LABEL = "Xpath=//p[text()='%s']/folowing-sibling::div/input";
+    public static String USER_DOPDOWN = "Css=p.oxd-userdropdown-name";
+    public static String LOGOUT_LINK = "Xpath=//a[@class='oxd-userdropdown-link'and text()='Logout']";
     //Opencart
     public static final String USER_MY_ACCOUNT_HEADER = "Xpath=//nav[@id='top'//span[text()='My Account']";
     public static final String USER_LOGOUT_LINK_ITEM = "Xpath=//a[@class='dropdown-item' and text()='Logout']";
