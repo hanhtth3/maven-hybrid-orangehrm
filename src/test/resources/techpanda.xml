@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Techpanda - UI Automation Test" verbose="1" >
+    <listeners>
+        <listener class-name="core.MethodListener"></listener>
+   </listeners>
+    <parameter name="appUrl" value="https://live.techpanda.org/"></parameter>
+    <test name="Run on FIREFOX browser" preserve-order="true" >
+        <parameter name="browser" value="Firefox"></parameter>
+        <classes>
+            <class name="com.techpanda.share.Register" />
+            <class name="com.techpanda.Level_20_Cookies" />
+        </classes>
+    </test>
+</suite>

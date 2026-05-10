@@ -3,6 +3,7 @@ package pageObjects.orangeHRM.EditNavigation;
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
+import pageObjects.openCart.admin.AdminLoginPO;
 import pageObjects.orangeHRM.DashboardPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
 import pageUIs.BasePageUI;
@@ -69,13 +70,5 @@ public class EditNavigatorPageObject extends BasePage {
         waitElementClickable(driver, EditNavigatorPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
         clickToElement(driver, EditNavigatorPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
         System.out.println("Page name:" + pageName);
-    }
-
-    public LoginPageObject clickLogoutOnTopMenu(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.USER_DOPDOWN);
-        clickToElement(driver, BasePageUI.USER_DOPDOWN);
-        waitElementClickable(driver, BasePageUI.LOGOUT_LINK);
-        clickToElement(driver, BasePageUI.LOGOUT_LINK);
-        return PageGenerator.getPage(DashboardPageObject.class,driver);
     }
 }

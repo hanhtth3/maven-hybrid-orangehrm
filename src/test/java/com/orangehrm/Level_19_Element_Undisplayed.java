@@ -36,7 +36,7 @@ public class Level_19_Element_Undisplayed extends BaseTest {
         loginPage.enterToTextboxByLabel(driver, "Login", adminUser);
         loginPage.enterToTextboxByLabel(driver, "Password", adminPassword);
         loginPage.clickToButtonByText(driver, "Login");
-        dashboardPage = PageGenerator(DashboardPageObject.class, driver);
+        dashboardPage = PageGenerator.getPage(DashboardPageObject.class, driver);
 
         verifyTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         dashboardPage.sleepInSecond(2);
@@ -59,7 +59,7 @@ public class Level_19_Element_Undisplayed extends BaseTest {
         verifyTrue(employeeListPage.isLoadingSpinnerDisappear(driver));
 
         addEmployeePage.clickToButtonByText(driver, "Add");
-        employeeListPage = PageGenerator.getPage(AddEmployeePageObject.class, driver);
+        employeeListPage = PageGenerator.getPage(EmployeeListPageObject.class, driver);
         verifyTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
 
         addEmployeePage.enterToTextboxByName(driver, "firstName", employeeFirstName);
@@ -82,7 +82,7 @@ public class Level_19_Element_Undisplayed extends BaseTest {
 
         verifyEquals(personalDetailPage.getTextboxValueByName(driver, "firstName"), employeeFirstName);
         verifyEquals(personalDetailPage.getTextboxValueByName(driver, "lastName"), employeeFirstName);
-        verifyEquals(personalDetailPage.getTextboxValueByLabel(driver, "employee ID", employeeID);
+        verifyEquals(personalDetailPage.getTextboxValueByLabel(driver, "employee ID"), employeeID);
 
         //Logout
 

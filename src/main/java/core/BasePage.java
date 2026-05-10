@@ -11,6 +11,7 @@ import pageObjects.PageGenerator;
 import pageObjects.openCart.admin.AdminLoginPO;
 import pageObjects.openCart.user.UserHomePO;
 import pageObjects.openCart.user.UserLoginPO;
+import pageObjects.orangeHRM.LoginPageObject;
 import pageUIs.BasePageUI;
 
 import java.time.Duration;
@@ -304,9 +305,9 @@ public class BasePage {
         List<WebElement> elements = getListElement(driver,castParameter(locator,restValue));
         overrideGlobalTimeout(driver,LONG_TIME);
 
-        if (elements.size()=0){
+        if (elements.size()==0){
             return true;
-        } else (elements.size()>0)&& !elements.get(0).isDisplayed(){
+        } else if (elements.size()>0&& !elements.get(0).isDisplayed()){
             return true;
         } else {
             return  false;
@@ -500,6 +501,13 @@ public class BasePage {
         clickToElement(driver, BasePageUI.USER_LOGOUT_LINK_ITEM);
         return PageGenerator.getPage(UserLoginPO.class, driver);
     }
+    public LoginPageObject clickLogoutOnTopMenu(WebDriver driver) {
+        waitElementClickable(driver, BasePageUI.USER_DOPDOWN);
+        clickToElement(driver, BasePageUI.USER_DOPDOWN);
+        waitElementClickable(driver, BasePageUI.LOGOUT_LINK);
+        clickToElement(driver, BasePageUI.LOGOUT_LINK);
+        return PageGenerator.getPage(LoginPageObject.class,driver);
+    }
 
     public AdminLoginPO clickToLogoutLinkAtAdminSite(WebDriver driver) {
         waitElementClickable(driver, BasePageUI.ADMIN_LOGOUT_LINK_ITEM);
@@ -568,14 +576,16 @@ public class BasePage {
         sendKeyToElement(driver, BasePageUI.BUTTON_BY_TEXT_IN_MAIN_TITLE, mainTitleName, buttonText);
     }
 
-    public void getTextboxValueByName(WebDriver driver, String textboxNameAttribute) {
+    public String getTextboxValueByName(WebDriver driver, String textboxNameAttribute) {
         waitElementVisible(driver, BasePageUI.TEXTBOX_BY_NAME, textboxNameAttribute);
         getElementDomAttribute(driver, BasePageUI.TEXTBOX_BY_NAME, "value", textboxNameAttribute);
+        return textboxNameAttribute;
     }
 
-    public void getTextboxValueByLabel(WebDriver driver, String textboxLabel) {
+    public String getTextboxValueByLabel(WebDriver driver, String textboxLabel) {
         waitElementVisible(driver, BasePageUI.TEXTBOX_BY_LABEL, textboxLabel);
         getElementDomAttribute(driver, BasePageUI.TEXTBOX_BY_LABEL, "value", textboxLabel);
+        return textboxLabel;
     }
 
     @Step("Click to {0} module")
@@ -614,6 +624,16 @@ public class BasePage {
         sendKeyToElement(driver, BasePageUI.CHECKBOX_BUTTON_BY_LABEL, labelName);
     }
 
+    public Set<Cookie> getPageCookies(WebDriver driver){
+       return driver.manage().getCookies();
+    }
+
+    public void setPageCookies(WebDriver driver,Set<Cookie> cookies){
+        for(Cookie cookie: cookies){
+            driver.manage().addCookie(cookie);
+        }
+
+    }
     public String getCurrentWindowID(WebDriver driver) {
         return driver.getWindowHandle();
     }
