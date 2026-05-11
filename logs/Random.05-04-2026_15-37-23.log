@@ -1,0 +1,18 @@
+[05-04-2026 15:37:48.196 com.orangehrm.Level_13_Logging] - ========================INIT BROWSER & DRIVER======================
+[05-04-2026 15:37:48.224 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 01: Enter to Username and Password with info: Admin|admin123
+[05-04-2026 15:37:49.239 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 02: Navigator to Dashboard page
+[05-04-2026 15:37:58.739 com.orangehrm.Level_13_Logging] - --------------PASSED------------------
+[05-04-2026 15:38:00.743 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 03: Navigator to Employee Search page
+[05-04-2026 15:38:03.316 com.orangehrm.Level_13_Logging] - --------------FAILED------------------
+[05-04-2026 15:38:03.323 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 04: Navigator to Add Employee page
+[05-04-2026 15:38:35.404 com.orangehrm.Level_13_Logging] - --------------PASSED------------------
+[05-04-2026 15:38:35.406 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 05: Enter to FirstName and LastName with info: Brown|Hana
+[05-04-2026 15:38:35.604 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 06: Navigator to  Personal Details page
+[05-04-2026 15:38:45.007 com.orangehrm.Level_13_Logging] - --------------PASSED------------------
+[05-04-2026 15:38:47.018 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 07: Verify First Name is display: Brown
+[05-04-2026 15:38:47.056 com.orangehrm.Level_13_Logging] - --------------FAILED------------------
+[05-04-2026 15:38:47.056 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 08: Verify Last Name is display: Hana
+[05-04-2026 15:38:47.093 com.orangehrm.Level_13_Logging] - --------------FAILED------------------
+[05-04-2026 15:38:47.093 com.orangehrm.Level_13_Logging] - NewEmployee - STEP 09: Verify Employee ID is display: 0401
+[05-04-2026 15:38:47.130 com.orangehrm.Level_13_Logging] - --------------PASSED------------------
+[05-04-2026 15:38:49.356 com.orangehrm.Level_13_Logging] - ========================CLOSE BROWSER & DRIVER======================

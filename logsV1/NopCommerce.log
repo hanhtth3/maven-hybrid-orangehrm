@@ -1,0 +1,18 @@
+[2026-04-04 21:56:15,177 com.orangehrm.Level_13_Logging] ========================INIT BROWSER & DRIVER======================
+[2026-04-04 21:56:15,209 com.orangehrm.Level_13_Logging] NewEmployee - STEP 01: Enter to Username and Password with info: Admin|admin123
+[2026-04-04 21:56:20,907 com.orangehrm.Level_13_Logging] NewEmployee - STEP 02: Navigator to Dashboard page
+[2026-04-04 21:56:53,983 com.orangehrm.Level_13_Logging] --------------PASSED------------------
+[2026-04-04 21:56:55,990 com.orangehrm.Level_13_Logging] NewEmployee - STEP 03: Navigator to Employee Search page
+[2026-04-04 21:57:10,718 com.orangehrm.Level_13_Logging] --------------FAILED------------------
+[2026-04-04 21:57:10,718 com.orangehrm.Level_13_Logging] NewEmployee - STEP 04: Navigator to Add Employee page
+[2026-04-04 21:57:43,795 com.orangehrm.Level_13_Logging] --------------PASSED------------------
+[2026-04-04 21:57:43,796 com.orangehrm.Level_13_Logging] NewEmployee - STEP 05: Enter to FirstName and LastName with info: Brown|Hana
+[2026-04-04 21:57:43,977 com.orangehrm.Level_13_Logging] NewEmployee - STEP 06: Navigator to  Personal Details page
+[2026-04-04 21:57:52,189 com.orangehrm.Level_13_Logging] --------------PASSED------------------
+[2026-04-04 21:57:54,194 com.orangehrm.Level_13_Logging] NewEmployee - STEP 07: Verify First Name is display: Brown
+[2026-04-04 21:57:54,236 com.orangehrm.Level_13_Logging] --------------FAILED------------------
+[2026-04-04 21:57:54,237 com.orangehrm.Level_13_Logging] NewEmployee - STEP 08: Verify Last Name is display: Hana
+[2026-04-04 21:57:54,270 com.orangehrm.Level_13_Logging] --------------FAILED------------------
+[2026-04-04 21:57:54,270 com.orangehrm.Level_13_Logging] NewEmployee - STEP 09: Verify Employee ID is display: 0413
+[2026-04-04 21:57:54,309 com.orangehrm.Level_13_Logging] --------------PASSED------------------
+[2026-04-04 21:57:56,408 com.orangehrm.Level_13_Logging] ========================CLOSE BROWSER & DRIVER======================
