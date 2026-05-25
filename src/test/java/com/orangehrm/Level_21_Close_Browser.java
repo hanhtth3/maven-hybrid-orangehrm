@@ -39,12 +39,14 @@ public class Level_21_Close_Browser extends BaseTest {
 
     @Test
     public void Login_01_CreateNewEmployee() {}
+    @Test
     public void Login_02_ViewEmployee() {}
+    @Test
     public void Login_03_DeleteEmployee() {}
 
     @AfterClass (alwaysRun = true)
     public void afterClass() {
-        closeBrowser();
+        closeBrowser(driver);
     }
 
     private WebDriver driver;

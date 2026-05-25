@@ -23,7 +23,7 @@ public class Register extends BaseTest {
 
         homePage = PageGenerator.getPage(HomePO.class, driver);
 
-        loginPage = homePage.openLoginPage()
+        loginPage = homePage.openLoginPage();
         registerPage = loginPage.clickCreatAnAccountLink();
 
         registerPage.enterToFirstName("Automation");
@@ -34,11 +34,11 @@ public class Register extends BaseTest {
         registerPage.clickToRegisterButton();
 
         myAccountPage = registerPage.clickToContinueAlert();
-        verifyEquals(myAccountPage.getSuccessMsg(),"Thank you registering with Main Website Store.")
+        verifyEquals(myAccountPage.getSuccessMsg(),"Thank you registering with Main Website Store.");
 
         cookies = myAccountPage.getPageCookies(driver);
 
-    closeBrowser();
+    closeBrowser(driver);
     }
     private WebDriver driver;
     private HomePO homePage;

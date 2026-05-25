@@ -2,6 +2,7 @@ package com.orangehrm;
 
 import core.BaseTest;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -16,7 +17,7 @@ import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
 
-public class Level_19_Element_Undisplayed extends BaseTest {
+public class Level_22_LiveCode extends BaseTest {
     @Parameters({"appUrl", "browser"})
     @BeforeClass
     public void beforeClass(String appURL, String browserName) {
@@ -28,10 +29,6 @@ public class Level_19_Element_Undisplayed extends BaseTest {
         employeeLastName = "Hana";
         employeeUsername = "Hana" + getRandomNumber();
         employeePassword = "Abc@123";
-    }
-
-    @Test
-    public void Login_01_CreateNewEmployee() {
 
         loginPage.enterToTextboxByLabel(driver, "Login", adminUser);
         loginPage.enterToTextboxByLabel(driver, "Password", adminPassword);
@@ -41,19 +38,11 @@ public class Level_19_Element_Undisplayed extends BaseTest {
         verifyTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         dashboardPage.sleepInSecond(2);
 
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Admin"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"PIM"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Leave"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Time"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Recruitment"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"My Info"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Performance"));
         verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Dashboard"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Directory"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Maintenance"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Claim"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Buzz"));
+    }
 
+    @Test
+    public void Employee_01_NewEmployee() {
         dashboardPage.clickToModuleByNameInMenuItem(driver, "PIM");
         employeeListPage = PageGenerator.getPage(EmployeeListPageObject.class, driver);
         verifyTrue(employeeListPage.isLoadingSpinnerDisappear(driver));
@@ -96,26 +85,54 @@ public class Level_19_Element_Undisplayed extends BaseTest {
 
         verifyTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         dashboardPage.sleepInSecond(2);
-
-        //Den man hinh DashBoard
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Leave"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Time"));
+        //Đến màn Dashboard
         verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"My Info"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Performance"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Dashboard"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Directory"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Claim"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemDisplayed(driver,"Buzz"));
+        dashboardPage.clickToModuleByNameInMenuItem(driver,"My Info");
+        personalDetailPage = PageGenerator.getPage(PersonalDetailPageObject.class, driver);
 
-        //Case 3: element khong hien thi tren UI va khong co trong DOM
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"Admin"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"PIM"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"Recruitment"));
-        verifyTrue(dashboardPage.isModuleByTextInMenuItemUnDisplayed(driver,"Maintenance"));
+        verifyEquals(personalDetailPage.getTextboxValueByName(driver, "firstName"), employeeFirstName);
+        verifyEquals(personalDetailPage.getTextboxValueByName(driver, "lastName"), employeeFirstName);
+        verifyEquals(personalDetailPage.getTextboxValueByLabel(driver, "employee ID"), employeeID);
 
+
+
+        //Tạo mới Enable/Disable
+        //Tạo mới không có thông tin login
+        //Login với employee vưà tạo
+        //Xóa employee với role Admin
+        //Login lại với employee đã xóa
     }
+    @Test
+    public void Employee_02_Upload_Avatar() {
+        //File type
+        //Maximum size
+        //Maximun Dimension
+    }
+    @Test
+    public void Employee_03_Edit_PersonalDetails() {
+        //Edit với role Admin
+        //View với role Employee
+        //Edit với role Employee
+        //View với role Admin
+    }
+    @Test
+    public void Employee_04_Contact_Details() {}
+    @Test
+    public void Employee_05_Emmergency_Details() {}
+    @Test
+    public void Employee_06_Assigned_Dependents() {}
+    @Test
+    public void Employee_07_Edit_View_Jobs() {}
+    @Test
+    public void Employee_08_Edit_View_Salary() {}
+    @Test
+    public void Employee_09_Edit_View_Tax() {}
+    @Test
+    public void Employee_10_Qualifications() {}
+    @Test
+    public void Employee_11_Search_Employeee() {}
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void afterClass() {
         closeBrowser(driver);
     }

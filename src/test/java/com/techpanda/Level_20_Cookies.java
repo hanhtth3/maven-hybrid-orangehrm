@@ -27,7 +27,7 @@ public class Level_20_Cookies extends BaseTest {
         loginPage.setPageCookies(driver,this.cookies);
 
         myaccountPage = PageGenerator.getPage(MyAccountPO.class,driver);
-        verifyEquals(myaccountPage.getMyAccountPageTitle(),"My Dashboard")
+        verifyEquals(myaccountPage.getMyAccountPageTitle(),"My Dashboard");
 
     }
    @Test
@@ -46,7 +46,7 @@ public class Level_20_Cookies extends BaseTest {
 
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(driver);
     }
     private WebDriver driver;
     private HomePO homePage;

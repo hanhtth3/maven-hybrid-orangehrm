@@ -12,7 +12,7 @@ public class MyAccountPO extends BasePage {
 
     public String getSuccessMsg() {
         waitElementVisible(driver, MyAccountPageUI.SUCCESS_MGS);
-        return getElementText(driver,MyAccountPageUI.SUCCESS_MGS)
+        return getElementText(driver,MyAccountPageUI.SUCCESS_MGS);
     }
 
     public String getMyAccountPageTitle() {
