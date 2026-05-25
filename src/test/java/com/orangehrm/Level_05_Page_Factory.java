@@ -57,7 +57,7 @@ public class Level_05_Page_Factory extends BaseTest {
 
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(driver);
     }
     private WebDriver driver;
     private AddEmployeePageObject addEmployeePage;

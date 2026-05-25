@@ -172,7 +172,9 @@ public class BasePage {
     }
 
     public void sendKeyToElement(WebDriver driver, String locator, CharSequence keyToSend, String... restValue) {
-        getWebElement(driver, castParameter(locator, restValue)).clear();
+        //getWebElement(driver, castParameter(locator, restValue)).clear();
+        getWebElement(driver,castParameter(locator,restValue)).sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        getWebElement(driver,castParameter(locator,restValue)).sendKeys(Keys.DELETE);
         getWebElement(driver, castParameter(locator, restValue)).sendKeys(keyToSend);
     }
 

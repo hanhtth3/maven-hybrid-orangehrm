@@ -60,7 +60,7 @@ public class Level_06_Page_Manager_II extends BaseTest {
 
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(driver);
     }
     private WebDriver driver;
     private AddEmployeePageObject addEmployeePage;

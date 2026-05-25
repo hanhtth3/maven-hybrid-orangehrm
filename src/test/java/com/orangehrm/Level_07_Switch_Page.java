@@ -67,7 +67,7 @@ public class Level_07_Switch_Page extends BaseTest {
 
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(driver);
     }
     private WebDriver driver;
     private AddEmployeePageObject addEmployeePage;

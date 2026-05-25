@@ -89,7 +89,7 @@ public class Level_17_JIRA extends BaseTest {
 
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(driver);
     }
     private WebDriver driver;
     private AddEmployeePageObject addEmployeePage;

@@ -84,7 +84,7 @@ public class Level_15_ChainTest extends BaseTest {
 
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(driver);
     }
     private WebDriver driver;
     private AddEmployeePageObject addEmployeePage;

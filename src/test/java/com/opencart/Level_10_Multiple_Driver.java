@@ -122,7 +122,7 @@ public class Level_10_Multiple_Driver extends BaseTest {
     }
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(adminDriver);
     }
     private WebDriver userDriver, adminDriver;
     private AdminLoginPO adminLoginPage;

@@ -163,7 +163,7 @@ public class Level_09_Switch_Url_Role extends BaseTest {
     }
     @AfterClass
     public void  afterClass(){
-        closeBrowser();
+        closeBrowser(driver);
     }
     private WebDriver driver;
     private AdminLoginPO adminLoginPage;
