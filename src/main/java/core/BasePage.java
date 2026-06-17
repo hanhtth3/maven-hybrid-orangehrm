@@ -504,8 +504,8 @@ public class BasePage {
         return PageGenerator.getPage(UserLoginPO.class, driver);
     }
     public LoginPageObject clickLogoutOnTopMenu(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.USER_DOPDOWN);
-        clickToElement(driver, BasePageUI.USER_DOPDOWN);
+        waitElementClickable(driver, BasePageUI.USER_DROPDOWN);
+        clickToElement(driver, BasePageUI.USER_DROPDOWN);
         waitElementClickable(driver, BasePageUI.LOGOUT_LINK);
         clickToElement(driver, BasePageUI.LOGOUT_LINK);
         return PageGenerator.getPage(LoginPageObject.class,driver);
@@ -556,10 +556,23 @@ public class BasePage {
     }
 
     //Orange HRM - dung rieng cho site nay
+    //ORangeHRM
+    @Step("Waiting for Loading Spinner undisplay")
+    public boolean isLoadingSpinnerDisappear(WebDriver driver) {
+        return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
+    }
+
     @Step("Enter to {0} textbox by label with value {1}")
     public void enterToTextboxByLabel(WebDriver driver, String textboxLabel, String valueToSendkey) {
         waitElementVisible(driver, BasePageUI.TEXTBOX_BY_LABEL, textboxLabel);
         sendKeyToElement(driver, BasePageUI.TEXTBOX_BY_LABEL, valueToSendkey, textboxLabel);
+    }
+
+    @Step("Enter to {0} textbox by label with value {1}")
+    public void clearToTextboxByLabel(WebDriver driver, String textboxLabel) {
+        waitElementVisible(driver, BasePageUI.TEXTBOX_BY_LABEL, textboxLabel);
+        sendKeyToElement(driver, BasePageUI.TEXTBOX_BY_LABEL, Keys.chord(Keys.CONTROL, "a"), textboxLabel);
+        sendKeyToElement(driver, BasePageUI.TEXTBOX_BY_LABEL, Keys.DELETE, textboxLabel);
     }
 
     @Step("Enter to {0} textbox by name with value {1}")
@@ -568,73 +581,140 @@ public class BasePage {
         sendKeyToElement(driver, BasePageUI.TEXTBOX_BY_NAME, valueToSendkey, textboxNameAttribute);
     }
 
+    @Step("Click to {0} button by text")
     public void clickToButtonByText(WebDriver driver, String buttonText) {
         waitElementClickable(driver, BasePageUI.BUTTON_BY_TEXT, buttonText);
-        sendKeyToElement(driver, BasePageUI.BUTTON_BY_TEXT, buttonText);
+        clickToElement(driver, BasePageUI.BUTTON_BY_TEXT, buttonText);
     }
 
     public void clickToButtonByTextInMainTitle(WebDriver driver, String buttonText, String mainTitleName) {
         waitElementClickable(driver, BasePageUI.BUTTON_BY_TEXT_IN_MAIN_TITLE, mainTitleName, buttonText);
-        sendKeyToElement(driver, BasePageUI.BUTTON_BY_TEXT_IN_MAIN_TITLE, mainTitleName, buttonText);
+        clickToElement(driver, BasePageUI.BUTTON_BY_TEXT_IN_MAIN_TITLE, mainTitleName, buttonText);
     }
 
     public String getTextboxValueByName(WebDriver driver, String textboxNameAttribute) {
         waitElementVisible(driver, BasePageUI.TEXTBOX_BY_NAME, textboxNameAttribute);
-        getElementDomAttribute(driver, BasePageUI.TEXTBOX_BY_NAME, "value", textboxNameAttribute);
-        return textboxNameAttribute;
+        return getElementDomProperty(driver, BasePageUI.TEXTBOX_BY_NAME, "value", textboxNameAttribute);
     }
 
     public String getTextboxValueByLabel(WebDriver driver, String textboxLabel) {
         waitElementVisible(driver, BasePageUI.TEXTBOX_BY_LABEL, textboxLabel);
-        getElementDomAttribute(driver, BasePageUI.TEXTBOX_BY_LABEL, "value", textboxLabel);
-        return textboxLabel;
+        return getElementDomProperty(driver, BasePageUI.TEXTBOX_BY_LABEL, "value", textboxLabel);
     }
 
-    @Step("Click to {0} module")
-    public void clickToModuleByNameInMenuItem(WebDriver driver, String moduleName) {
+    public String getDropdownSelectedValueByLabel(WebDriver driver, String labelName) {
+        waitElementVisible(driver, BasePageUI.SELECTED_DROPDOWN_VALUE_BY_LABEL, labelName);
+        return getElementText(driver, BasePageUI.SELECTED_DROPDOWN_VALUE_BY_LABEL, labelName).trim();
+    }
+
+    public boolean isRadioSelectedByLabel(WebDriver driver, String labelName) {
+        waitElementVisible(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, labelName);
+        String classValue = getElementDomAttribute(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, "class", labelName);
+        return classValue.contains("oxd-radio-input--active");
+    }
+
+    public String getSelectedRadioValue(WebDriver driver, String... restValue) {
+        for (String value : restValue) {
+            if (isRadioSelectedByLabel(driver, value)) {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    public boolean isTableinfoDisplayed(WebDriver driver, String fieldName, String fieldValue) {
+        waitElementVisible(driver, BasePageUI.DYNAMIC_TABLE_INFO, fieldName, fieldValue);
+        return isElementDisplay(driver, BasePageUI.DYNAMIC_TABLE_INFO, fieldName, fieldValue);
+    }
+
+    @Step("Click to {0} module in Menu Item")
+    public void clickToModuleByTextInMenuItem(WebDriver driver, String moduleName) {
         waitElementClickable(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
         clickToElement(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
     }
 
     public boolean isModuleByTextInMenuItemDisplayed(WebDriver driver, String moduleName) {
-        waitListElementVisibleNotInDOM(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
-        return isElementUndisplay(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
+        waitElementVisible(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+        return isElementDisplay(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
     }
 
-    public boolean isModuleByTextInMenuItemUnDisplayed(WebDriver driver, String moduleName) {
-        waitElementVisible(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
-        return isElementDisplay(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM,moduleName);
+    public boolean isModuleByTextInMenuItemUndisplayed(WebDriver driver, String moduleName) {
+        waitListElementVisibleNotInDOM (driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+        return isElementUndisplay(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
     }
+
+    @Step("Click to {0} Menu Item in header")
+    public void clickToMenuItemHeader(WebDriver driver, String moduleName) {
+        waitElementClickable(driver, BasePageUI.MODULE_BY_TEXT_IN_HEADER, moduleName);
+        clickToElement(driver, BasePageUI.MODULE_BY_TEXT_IN_HEADER, moduleName);
+    }
+
+    @Step("Click to {0} button by text")
+    public void clickToButtonByGroupText(WebDriver driver, String groupText, String buttonText) {
+        waitElementClickable(driver, BasePageUI.DYNAMIC_FILE_NAME_BY_LABEL, groupText, buttonText);
+        clickToElement(driver, BasePageUI.DYNAMIC_FILE_NAME_BY_LABEL, groupText, buttonText);
+  }
 
     public void selectDropdownByLabel(WebDriver driver, String labelName, String valueToSelect) {
-        waitElementVisible(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, labelName);
+        waitElementClickable(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, labelName);
         selectItemInTableDropdown(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, BasePageUI.CHILD_DROPDOWN_BY_LABEL, valueToSelect, labelName);
     }
 
-    public boolean isToastMessageDisplayed(WebDriver driver, String toastMessage) {
-        waitElementVisible(driver,BasePageUI.TOAST_MESSAGE_BY_TEXT,toastMessage);
-        return isElementDisplay(driver,BasePageUI.TOAST_MESSAGE_BY_TEXT,toastMessage);
+    public void selectDropdownSubChildByLabel(WebDriver driver, String labelName, String valueToSelect) {
+        waitElementClickable(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, labelName);
+        selectItemInTableDropdown(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, BasePageUI.SUB_CHILD_DROPDOWN_BY_LABEL, valueToSelect, labelName);
     }
 
-    public void clickToRadioButton(WebDriver driver, String labelName) {
+    public boolean isToastMessageDisplayed(WebDriver driver, String toastMessage) {
+        waitElementVisible(driver, BasePageUI.TOAST_MESSAGE_BY_TEXT, toastMessage);
+        return isElementDisplay(driver, BasePageUI.TOAST_MESSAGE_BY_TEXT, toastMessage);
+    }
+
+    public void clickToRadioByLabel(WebDriver driver, String labelName) {
         waitElementClickable(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, labelName);
-        sendKeyToElement(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, labelName);
+        clickToElement(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, labelName);
     }
 
     public void clickToCheckboxByLabel(WebDriver driver, String labelName) {
-        waitElementClickable(driver, BasePageUI.CHECKBOX_BUTTON_BY_LABEL, labelName);
-        sendKeyToElement(driver, BasePageUI.CHECKBOX_BUTTON_BY_LABEL, labelName);
+        waitElementClickable(driver, BasePageUI.CHECKBOX_BY_LABEL, labelName);
+        clickToElement(driver, BasePageUI.CHECKBOX_BY_LABEL, labelName);
     }
 
-    public Set<Cookie> getPageCookies(WebDriver driver){
-       return driver.manage().getCookies();
+    public LoginPageObject clickLogoutOnTopMenu(WebDriver driver) {
+        waitElementClickable(driver, BasePageUI.USER_DROPDOWN);
+        clickToElement(driver, BasePageUI.USER_DROPDOWN);
+
+        waitElementClickable(driver, BasePageUI.LOGOUT_LINK);
+        clickToElement(driver, BasePageUI.LOGOUT_LINK);
+
+        return PageGenerator.getPage(LoginPageObject.class, driver);
     }
 
-    public void setPageCookies(WebDriver driver,Set<Cookie> cookies){
-        for(Cookie cookie: cookies){
-            driver.manage().addCookie(cookie);
+    public void uploadFileByLabel(WebDriver driver, String labelName, String... fileNames) {
+        WebElement uploadElement = getWebElement(driver, BasePageUI.DYNAMIC_UPLOAD_FILE_BY_LABEL, labelName);
+        // Check multiple upload support
+        boolean isMultiple = uploadElement.getDomAttribute("multiple") != null;
+
+        if (!isMultiple && fileNames.length > 1) {
+            throw new RuntimeException("Upload field '" + labelName + "' does not support multiple files.");
         }
 
+        StringBuilder fullFileName = new StringBuilder();
+
+        for (String fileName : fileNames) {
+            fullFileName.append(GlobalConstants.UPLOAD_PATH).append(fileName).append("\n");
+        }
+        uploadElement.sendKeys(fullFileName.toString().trim());
+        sleepInSecond(2);
+    }
+
+    public boolean isFileUploadedByLabel(WebDriver driver, String labelName, String fileName) {
+        try {
+            waitElementVisible(driver, BasePageUI.DYNAMIC_FILE_NAME_BY_LABEL, labelName, fileName);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
     public String getCurrentWindowID(WebDriver driver) {
         return driver.getWindowHandle();

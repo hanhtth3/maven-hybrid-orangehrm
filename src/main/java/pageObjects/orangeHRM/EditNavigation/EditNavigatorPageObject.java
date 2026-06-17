@@ -16,11 +16,11 @@ public class EditNavigatorPageObject extends BasePage {
     public EditNavigatorPageObject(WebDriver driver) {
         this.driver = driver;
     }
-    public PersonalDetailPageObject openPersonnalDetailPage()
+    public pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject openPersonnalDetailPage()
     {
         waitElementClickable(driver, EditNavigatorPageUI.PERSONAL_DETAILS_LINK);
         clickToElement(driver,EditNavigatorPageUI.PERSONAL_DETAILS_LINK);
-        return PageGenerator.getPage(PersonalDetailPageObject.class,driver);
+        return PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject.class,driver);
     }
 
     public DependentsPageObject openDependentsPage()
@@ -53,7 +53,7 @@ public class EditNavigatorPageObject extends BasePage {
 
         switch (pageName){
             case "Personal Details":
-                return PageGenerator.getPage(PersonalDetailPageObject.class,driver);
+                return PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject.class,driver);
             case "Dependents":
                 return PageGenerator.getPage(DependentsPageObject.class,driver);
             case "Contact Details":
