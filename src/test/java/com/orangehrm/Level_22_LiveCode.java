@@ -137,7 +137,7 @@ public class Level_22_LiveCode extends BaseTest {
         //Get size hình sau upload
         Dimension newProfileImageFile = personalDetailPage.getProfileNaturalImageSize();
         //Verify hai giá trị khác nhau
-        verifynotEquals(oldProfileImageFile,newProfileImageFile);
+        verifyNotEquals(oldProfileImageFile,newProfileImageFile);
     }
     @Test
     public void Employee_03_EditPersonalDetails() {
@@ -192,7 +192,7 @@ public class Level_22_LiveCode extends BaseTest {
 
     @Test
     public void Employee_04_ContactDetais() {
-        personalDetailPage.clickToMenuProfile(driver, "Contact Details");
+        personalDetailPage.click(driver, "Contact Details");
         contactDetailPage = PageGenerator.getPage(ContactDetailPageObject.class, driver);
         verifyTrue(contactDetailPage.isLoadingSpinnerDisappear(driver));
         contactDetailPage.sleepInSecond(2);
@@ -227,7 +227,7 @@ public class Level_22_LiveCode extends BaseTest {
     @Test
     public void Employee_05_EmergencyDetais() {
         contactDetailPage.clickToMenuProfile(driver, "Emergency Contacts");
-        emergencyContactPage = PageGenerator.getPage(EmergencyContactPageObject.class, driver);
+        emergencyContactPage = PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.EmergencyContactPageObject.class, driver);
         verifyTrue(emergencyContactPage.isLoadingSpinnerDisappear(driver));
         emergencyContactPage.sleepInSecond(3);
 
@@ -239,7 +239,7 @@ public class Level_22_LiveCode extends BaseTest {
         emergencyContactPage.enterToTextboxByLabel(driver, "Mobile", contMobile);
 
         emergencyContactPage.clickToButtonByGroupText(driver, "Save Emergency Contact", "Save");
-        emergencyContactPage = PageGenerator.getPage(EmergencyContactPageObject.class, driver);
+        emergencyContactPage = PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.EmergencyContactPageObject.class, driver);
 
         verifyTrue(emergencyContactPage.isToastMessageDisplayed(driver, "Successfully Saved"));
         verifyTrue(emergencyContactPage.isLoadingSpinnerDisappear(driver));
@@ -396,7 +396,7 @@ public class Level_22_LiveCode extends BaseTest {
     @Test
     public void Employee_10_Qualifications() {
         salaryPage.clickToMenuProfile(driver, "Qualifications");
-        qualificationsPage = PageGenerator.getPage(QualificationsPageObject.class, driver);
+        qualificationsPage = PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.QualificationsPageObject.class, driver);
         verifyTrue(qualificationsPage.isLoadingSpinnerDisappear(driver));
         qualificationsPage.sleepInSecond(3);
 
@@ -450,13 +450,6 @@ public class Level_22_LiveCode extends BaseTest {
         Assert.assertTrue(employeeInformationPage.isTableinfoDisplayed(driver,"Employment Status", jEmploymentStatus));
         Assert.assertTrue(employeeInformationPage.isTableinfoDisplayed(driver,"Sub Unit", jSubUnit));
 
-    }
-    @Test
-    public void Employee_03_Edit_PersonalDetails() {
-        //Edit với role Admin
-        //View với role Employee
-        //Edit với role Employee
-        //View với role Admin
     }
 
     @AfterClass (alwaysRun = true)
