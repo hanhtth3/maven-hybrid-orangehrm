@@ -1,5 +1,8 @@
 package core;
 
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Random;
+
+import static org.openqa.selenium.remote.Browser.*;
 
 public class BaseTest {
     private WebDriver driver;
@@ -31,6 +36,18 @@ public class BaseTest {
                 break;
             case SAFARI:
                 driver = new SafariDriver();
+                break;
+            case HEAD_CHROME:
+                ChromeOptions chromeOptions = new ChromeOptions();
+                driver = new ChromeDriver(chromeOptions);
+                break;
+            case HEAD_FIREFOX:
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                driver = new FirefoxDriver(firefoxOptions);
+                break;
+            case HEAD_EDGE:
+                EdgeOptions edgeOptions = new EdgeOptions();
+                driver = new EdgeDriver(edgeOptions);
                 break;
             default:
                 throw new RuntimeException("Browser name is not valid");

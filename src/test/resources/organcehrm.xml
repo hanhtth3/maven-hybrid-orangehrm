@@ -12,7 +12,7 @@
     <test name="Run on FIREFOX browser" >
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
-            <class name="com.orangehrm.Level_22_LiveCode" />
+            <class name="com.orangehrm.Level_23_Browser_Config" />
         </classes>
     </test>
 </suite>

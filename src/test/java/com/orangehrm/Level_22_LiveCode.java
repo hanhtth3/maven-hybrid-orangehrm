@@ -192,7 +192,7 @@ public class Level_22_LiveCode extends BaseTest {
 
     @Test
     public void Employee_04_ContactDetais() {
-        personalDetailPage.click(driver, "Contact Details");
+        personalDetailPage.clickToMenuItemHeader(driver, "Contact Details");
         contactDetailPage = PageGenerator.getPage(ContactDetailPageObject.class, driver);
         verifyTrue(contactDetailPage.isLoadingSpinnerDisappear(driver));
         contactDetailPage.sleepInSecond(2);
@@ -226,7 +226,7 @@ public class Level_22_LiveCode extends BaseTest {
 
     @Test
     public void Employee_05_EmergencyDetais() {
-        contactDetailPage.clickToMenuProfile(driver, "Emergency Contacts");
+        contactDetailPage.clickToMenuItemHeader(driver, "Emergency Contacts");
         emergencyContactPage = PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.EmergencyContactPageObject.class, driver);
         verifyTrue(emergencyContactPage.isLoadingSpinnerDisappear(driver));
         emergencyContactPage.sleepInSecond(3);
