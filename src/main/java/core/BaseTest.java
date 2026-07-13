@@ -14,6 +14,8 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Random;
 
@@ -24,37 +26,49 @@ public class BaseTest {
 
     protected WebDriver getBrowserDriver(String appURL, String browserName) {
         BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+        Path path =null;
+        File extendsionFilePath;
         switch (browserList) {
-            case FIREFOX:
-                driver = new FirefoxDriver();
+            case HEAD_FIREFOX:
+                FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("-headless");
+                options.addArguments("-window-size=1920,1080");
+                driver = new FirefoxDriver(options);
                 break;
-            case CHROME:
-                driver = new ChromeDriver();
+            case HEAD_CHROME:
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("window-size=1920,1080");
+                driver = new ChromeDriver(chromeOptions);
                 break;
-            case EDGE:
-                driver = new EdgeDriver();
+            case HEAD_EDGE:
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--headless");
+                edgeOptions.addArguments("--window-size=1920,1080");
+                driver = new EdgeDriver(edgeOptions);
                 break;
             case SAFARI:
                 driver = new SafariDriver();
                 break;
-            case HEAD_CHROME:
-                ChromeOptions chromeOptions = new ChromeOptions();
-                driver = new ChromeDriver(chromeOptions);
+            case CHROME:
+                driver = new ChromeDriver();
                 break;
-            case HEAD_FIREFOX:
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                driver = new FirefoxDriver(firefoxOptions);
+            case FIREFOX:
+                driver = new FirefoxDriver();
+                path = Paths.get(GlobalConstants.BROWSER_EXTENSION_PATH+"wappalyser.xpi");
+                FirefoxDriver ffDriver =  (FirefoxDriver) driver;
+                ffDriver.installExtension(path);
+                driver = ffDriver;
                 break;
-            case HEAD_EDGE:
-                EdgeOptions edgeOptions = new EdgeOptions();
-                driver = new EdgeDriver(edgeOptions);
+            case EDGE:
+                driver = new EdgeDriver();
                 break;
             default:
                 throw new RuntimeException("Browser name is not valid");
         }
 
         driver.get(appURL);
-        driver.manage().window().maximize();
+       // driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         return driver;
     }

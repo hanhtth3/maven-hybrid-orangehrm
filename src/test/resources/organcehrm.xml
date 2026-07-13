@@ -9,8 +9,15 @@
 <!--       <listener class-name="reportConfig.AllureTestListener"></listener>-->
     </listeners>
     <parameter name="appUrl" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"></parameter>
-    <test name="Run on FIREFOX browser" >
-        <parameter name="browser" value="Firefox"></parameter>
+<!--    <test name="Run on FIREFOX browser" >-->
+<!--        <parameter name="browser" value="Firefox"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="com.orangehrm.Level_23_Browser_Config" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="Run on Chrome Headless browser" >
+        <parameter name="browser" value="head_chrome"></parameter>
         <classes>
             <class name="com.orangehrm.Level_23_Browser_Config" />
         </classes>
