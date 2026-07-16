@@ -2,8 +2,7 @@ package pageObjects.orangeHRM;
 
 import org.openqa.selenium.WebDriver;
 import pageFactory.AddEmployeePageObject;
-import pageObjects.orangeHRM.EditNavigation.ContactDetailPageObject;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.ContactDetailPageObject;
 
 public class PageGeneratorManager {
     public static LoginPageObject getLoginPage(WebDriver driver){
@@ -19,8 +18,8 @@ public class PageGeneratorManager {
     public static EmployeeListPageObject getEmployeeListPage(WebDriver driver){
         return new EmployeeListPageObject(driver);
     }
-    public static PersonalDetailPageObject getPersonalDetailPage(WebDriver driver){
-        return new PersonalDetailPageObject(driver);
+    public static pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject getPersonalDetailPage(WebDriver driver){
+        return new pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject(driver);
     }
     public static ContactDetailPageObject getContactDetailPage(WebDriver driver){
         return new ContactDetailPageObject(driver);

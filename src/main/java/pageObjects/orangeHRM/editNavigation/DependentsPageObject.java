@@ -1,4 +1,4 @@
-package pageObjects.orangeHRM.EditNavigation;
+package pageObjects.orangeHRM.editNavigation;
 
 import org.openqa.selenium.WebDriver;
 
@@ -8,5 +8,9 @@ public class DependentsPageObject extends EditNavigatorPageObject {
     public DependentsPageObject(WebDriver driver) {
         super(driver);
         this.driver = driver;
+    }
+
+    public void enterToDatePickerByLabel(WebDriver driver, String dateOfBirth, String depBirthValue) {
+
     }
 }

@@ -1,12 +1,8 @@
-package pageObjects.orangeHRM.EditNavigation;
+package pageObjects.orangeHRM.editNavigation;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
-import pageObjects.openCart.admin.AdminLoginPO;
-import pageObjects.orangeHRM.DashboardPageObject;
-import pageObjects.orangeHRM.LoginPageObject;
-import pageUIs.BasePageUI;
 import pageUIs.orangeHRM.EditNavigatorPageUI.EditNavigatorPageUI;
 
 public class EditNavigatorPageObject extends BasePage {

@@ -18,4 +18,10 @@ public class DashboardPageObject extends BasePage {
     clickToElement(driver,DashboardPageUI.PIM_MODULE);
     return PageGenerator.getPage(EmployeeListPageObject.class,driver);
     }
+
+    public void clickToModuleByNameInMenuItem(WebDriver driver, String pim) {
+    }
+
+    public boolean isModuleByTextInMenuItemUnDisplayed(WebDriver driver, String admin) {
+    return true;}
 }

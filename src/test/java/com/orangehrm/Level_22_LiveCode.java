@@ -10,12 +10,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.PageGenerator;
 import pageObjects.orangeHRM.*;
-import pageObjects.orangeHRM.EditNavigation.ContactDetailPageObject;
-import pageObjects.orangeHRM.EditNavigation.DependentsPageObject;
-import pageObjects.orangeHRM.EditNavigation.EditNavigatorPageObject;
-import pageObjects.orangeHRM.EditNavigation.JobPageObject;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
-import pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.ContactDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.DependentsPageObject;
+import pageObjects.orangeHRM.editNavigation.EditNavigatorPageObject;
+import pageObjects.orangeHRM.editNavigation.JobPageObject;
 
 public class Level_22_LiveCode extends BaseTest {
     @Parameters({"appUrl", "browser"})
@@ -128,7 +126,7 @@ public class Level_22_LiveCode extends BaseTest {
         personalDetailPage.uploadMultipleFiles(driver,"Cowboy.png");
         personalDetailPage.uploadMultipleFiles(driver,"Panda.");
 
-        personalDetailPage.clickToButtonByText(driver."Save");
+        personalDetailPage.clickToButtonByText(driver,"Save");
 
         verifyTrue(personalDetailPage.isToastMessageDisplayed(driver,"Successfully Updated"));
         verifyTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
@@ -255,11 +253,11 @@ public class Level_22_LiveCode extends BaseTest {
         verifyTrue(emergencyContactPage.isLoadingSpinnerDisappear(driver));
         emergencyContactPage.sleepInSecond(5);
 
-        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed("Name", emerName));
-        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed("Relationship", emerRelationship));
-        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed("Home Telephone", emerHomeTelephone));
-        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed("Mobile", contMobile));
-        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed("File Name", emerFileName));
+        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed(driver,"Name", emerName));
+        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed(driver,"Relationship", emerRelationship));
+        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed(driver,"Home Telephone", emerHomeTelephone));
+        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed(driver,"Mobile", contMobile));
+        Assert.assertTrue(emergencyContactPage.isTableinfoDisplayed(driver,"File Name", emerFileName));
     }
 
     @Test
@@ -291,10 +289,10 @@ public class Level_22_LiveCode extends BaseTest {
         verifyTrue(dependentsPage.isLoadingSpinnerDisappear(driver));
         dependentsPage.sleepInSecond(5);
 
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Name", depName));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Relationship", depRelationship));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Date of Birth", depBirthValue));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("File Name", depFileName));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Name", depName));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Relationship", depRelationship));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Date of Birth", depBirthValue));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"File Name", depFileName));
     }
 
     @Test
@@ -340,7 +338,7 @@ public class Level_22_LiveCode extends BaseTest {
         verifyEquals(jobPage.getDropdownSelectedValueByLabel(driver, "Employment Status"), jEmploymentStatus);
         verifyEquals(jobPage.getDatepickerValueByLabel(driver, "Contract Start Date"), jContractStartDate);
         Assert.assertTrue(jobPage.isFileUploadedByLabel(driver, jContractDetails, "Contract Details"));
-        Assert.assertTrue(jobPage.isTableinfoDisplayed("File Name", jFileName));
+        Assert.assertTrue(jobPage.isTableinfoDisplayed(driver,"File Name", jFileName));
     }
 
     @Test
@@ -358,12 +356,12 @@ public class Level_22_LiveCode extends BaseTest {
         salaryPage.sleepInSecond(2);
         salaryPage.selectDropdownByLabel(driver, "Pay Frequency", sPayFrequency);
         salaryPage.selectDropdownByLabel(driver, "Currency", sCurrency);
-        salaryPage.enterToTextboxByLabel(driver, "Amount", "1", sAmount);
+        salaryPage.enterToTextboxByLabel(driver, "Amount", sAmount);
         salaryPage.clickToCheckboxByLabel(driver, "Include Direct Deposit Details");
         salaryPage.enterToTextboxByLabel(driver, "Account Number", sAccountNumber);
         salaryPage.selectDropdownByLabel(driver, "Account Type", sAccountType);
         salaryPage.enterToTextboxByLabel(driver, "Routing Number", sRoutingNumber);
-        salaryPage.enterToTextboxByLabel(driver, "Amount", "2", sDAmount);
+        salaryPage.enterToTextboxByLabel(driver, "Amount",  sDAmount);
 
         salaryPage.scrollToBottomPage(driver);
         salaryPage.clickToButtonByGroupText(driver, " Add Salary Component ", "Save");
@@ -381,12 +379,12 @@ public class Level_22_LiveCode extends BaseTest {
         verifyTrue(salaryPage.isLoadingSpinnerDisappear(driver));
         salaryPage.sleepInSecond(5);
 
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Salary Component", sSalaryComponent));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Amount", sAmount));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Currency", sCurrency));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Pay Frequency", sPayFrequency));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("Direct Deposit Amount", sDAmount + ".00"));
-        Assert.assertTrue(dependentsPage.isTableinfoDisplayed("File Name", sFileName));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Salary Component", sSalaryComponent));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Amount", sAmount));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Currency", sCurrency));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Pay Frequency", sPayFrequency));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"Direct Deposit Amount", sDAmount + ".00"));
+        Assert.assertTrue(dependentsPage.isTableinfoDisplayed(driver,"File Name", sFileName));
     }
 
     @Test
@@ -424,13 +422,13 @@ public class Level_22_LiveCode extends BaseTest {
         verifyTrue(qualificationsPage.isLoadingSpinnerDisappear(driver));
         qualificationsPage.sleepInSecond(5);
 
-        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed("Company", qCompany));
-        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed("Job Title", qJobTitle));
-        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed("From", qFrom));
-        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed("To", qTo));
-        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed("Level", qLevel));
-        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed("Year", qYear));
-        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed("GPA/Score", qGPA));
+        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed(driver,"Company", qCompany));
+        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed(driver,"Job Title", qJobTitle));
+        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed(driver,"From", qFrom));
+        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed(driver,"To", qTo));
+        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed(driver,"Level", qLevel));
+        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed(driver,"Year", qYear));
+        Assert.assertTrue(qualificationsPage.isTableinfoDisplayed(driver,"GPA/Score", qGPA));
     }
 
     @Test

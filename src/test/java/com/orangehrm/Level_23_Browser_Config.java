@@ -1,23 +1,21 @@
 package com.orangehrm;
 
 import core.BaseTest;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.PageGenerator;
 import pageObjects.orangeHRM.*;
-import pageObjects.orangeHRM.EditNavigation.ContactDetailPageObject;
-import pageObjects.orangeHRM.EditNavigation.DependentsPageObject;
-import pageObjects.orangeHRM.EditNavigation.EditNavigatorPageObject;
-import pageObjects.orangeHRM.EditNavigation.JobPageObject;
+import pageObjects.orangeHRM.editNavigation.ContactDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.DependentsPageObject;
+import pageObjects.orangeHRM.editNavigation.EditNavigatorPageObject;
+import pageObjects.orangeHRM.editNavigation.JobPageObject;
 
 public class Level_23_Browser_Config extends BaseTest {
     @Parameters({"appUrl", "browser"})

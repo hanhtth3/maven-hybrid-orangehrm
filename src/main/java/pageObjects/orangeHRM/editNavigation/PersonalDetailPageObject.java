@@ -3,7 +3,6 @@ package pageObjects.orangeHRM.editNavigation;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import pageObjects.orangeHRM.EditNavigation.EditNavigatorPageObject;
 import pageUIs.orangeHRM.editNavigation.PersonalDetailPageUI;
 
 public class PersonalDetailPageObject extends EditNavigatorPageObject {
@@ -60,5 +59,14 @@ public class PersonalDetailPageObject extends EditNavigatorPageObject {
     }
 
 
+    public void enterToDatePickerByLabel(WebDriver driver, String dateOfBirth, String eBirth) {
+    }
 
+    public String getDatepickerValueByLabel(WebDriver driver, String dateOfBirth) {
+        return dateOfBirth;
+    }
+
+    public void clickToRadioButton(WebDriver driver, String disabled) {
+
+    }
 }

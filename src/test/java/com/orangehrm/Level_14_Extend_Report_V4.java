@@ -11,15 +11,11 @@ import org.testng.annotations.Test;
 import pageObjects.PageGenerator;
 import pageObjects.orangeHRM.AddEmployeePageObject;
 import pageObjects.orangeHRM.DashboardPageObject;
-import pageObjects.orangeHRM.EditNavigation.ContactDetailPageObject;
-import pageObjects.orangeHRM.EditNavigation.DependentsPageObject;
-import pageObjects.orangeHRM.EditNavigation.JobPageObject;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.ContactDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.DependentsPageObject;
+import pageObjects.orangeHRM.editNavigation.JobPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
-import reportConfig.ExtentManager;
-
-import java.lang.reflect.Method;
 
 public class Level_14_Extend_Report_V4 extends BaseTest {
     @Parameters ({"appUrl", "browser"})
@@ -81,7 +77,7 @@ public class Level_14_Extend_Report_V4 extends BaseTest {
     private DashboardPageObject dashboardPage;
     private EmployeeListPageObject employeeListPage;
     private LoginPageObject loginPage;
-    private PersonalDetailPageObject personalDetailPage;
+    private pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject personalDetailPage;
     private ContactDetailPageObject contactDetailPage;
     private JobPageObject jobPage;
     private DependentsPageObject dependentsPage;

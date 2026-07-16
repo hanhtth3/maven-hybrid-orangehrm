@@ -4,7 +4,6 @@ import core.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
 import pageUIs.orangeHRM.EditNavigatorPageUI.AddEmployeePageUI;
 
 public class AddEmployeePageObject extends BasePage {
@@ -30,10 +29,10 @@ public class AddEmployeePageObject extends BasePage {
         sendKeyToElement(driver,AddEmployeePageUI.LAST_NAME_TEXTBOX,lastName);
     }
     @Step("Click to Save button")
-    public PersonalDetailPageObject clickSaveButton() {
+    public pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject clickSaveButton() {
         waitElementClickable(driver, AddEmployeePageUI.SAVE_BUTTON);
         clickToElement(driver, AddEmployeePageUI.SAVE_BUTTON);
         waitListElementInvisible(driver, AddEmployeePageUI.SPINNER_ICON);
-        return PageGenerator.getPage(PersonalDetailPageObject.class,driver);
+        return PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject.class,driver);
     }
 }

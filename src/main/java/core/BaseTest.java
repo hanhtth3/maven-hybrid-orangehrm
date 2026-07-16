@@ -55,10 +55,6 @@ public class BaseTest {
                 break;
             case FIREFOX:
                 driver = new FirefoxDriver();
-                path = Paths.get(GlobalConstants.BROWSER_EXTENSION_PATH+"wappalyser.xpi");
-                FirefoxDriver ffDriver =  (FirefoxDriver) driver;
-                ffDriver.installExtension(path);
-                driver = ffDriver;
                 break;
             case EDGE:
                 driver = new EdgeDriver();
@@ -68,7 +64,7 @@ public class BaseTest {
         }
 
         driver.get(appURL);
-       // driver.manage().window().maximize();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         return driver;
     }
@@ -175,10 +171,10 @@ public class BaseTest {
     @BeforeSuite
     public void deleteFileInReport() {
         // Remove all file in ReportNG screenshot (image)
-        deleteAllFileInFolder("reportNGImage");
+        //deleteAllFileInFolder("reportNGImage");
 
         // Remove all file in Allure attachment (json file)
-        deleteAllFileInFolder("htmlAllure");
+        //deleteAllFileInFolder("htmlAllure");
     }
 
     public void deleteAllFileInFolder(String folderName) {

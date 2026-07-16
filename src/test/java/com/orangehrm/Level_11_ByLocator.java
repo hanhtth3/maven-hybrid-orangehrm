@@ -10,10 +10,9 @@ import org.testng.annotations.Test;
 import pageObjects.PageGenerator;
 import pageObjects.orangeHRM.AddEmployeePageObject;
 import pageObjects.orangeHRM.DashboardPageObject;
-import pageObjects.orangeHRM.EditNavigation.ContactDetailPageObject;
-import pageObjects.orangeHRM.EditNavigation.DependentsPageObject;
-import pageObjects.orangeHRM.EditNavigation.JobPageObject;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.ContactDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.DependentsPageObject;
+import pageObjects.orangeHRM.editNavigation.JobPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
 
@@ -64,7 +63,7 @@ public class Level_11_ByLocator extends BaseTest {
 
         dependentsPage = (DependentsPageObject) jobPage.openEditNavigatorByPageName("Dependents");
 
-        personalDetailPage = (PersonalDetailPageObject) dependentsPage.openEditNavigatorByPageName("Personal Details");
+        personalDetailPage = (pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject) dependentsPage.openEditNavigatorByPageName("Personal Details");
 
         jobPage = (JobPageObject) personalDetailPage.openEditNavigatorByPageName("Job");
     }
@@ -82,7 +81,7 @@ public class Level_11_ByLocator extends BaseTest {
         dependentsPage = PageGenerator.getPage(DependentsPageObject.class,driver);
 
         dependentsPage.openEditNavigatorByName("Personal Details");
-        personalDetailPage = PageGenerator.getPage(PersonalDetailPageObject.class,driver);
+        personalDetailPage = PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject.class,driver);
 
         personalDetailPage.openEditNavigatorByName("Job");
         jobPage = PageGenerator.getPage(JobPageObject.class,driver);
@@ -97,7 +96,7 @@ public class Level_11_ByLocator extends BaseTest {
     private DashboardPageObject dashboardPage;
     private EmployeeListPageObject employeeListPage;
     private LoginPageObject loginPage;
-    private PersonalDetailPageObject personalDetailPage;
+    private pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject personalDetailPage;
     private ContactDetailPageObject contactDetailPage;
     private JobPageObject jobPage;
     private DependentsPageObject dependentsPage;

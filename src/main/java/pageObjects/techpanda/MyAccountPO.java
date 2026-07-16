@@ -1,8 +1,11 @@
 package pageObjects.techpanda;
 
 import core.BasePage;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import pageUIs.techpanda.MyAccountPageUI;
+
+import java.util.Set;
 
 public class MyAccountPO extends BasePage {
     private WebDriver driver;
@@ -18,6 +21,10 @@ public class MyAccountPO extends BasePage {
     public String getMyAccountPageTitle() {
         waitElementVisible(driver,MyAccountPageUI.MY_DASHBOAD_TITLE);
         return getElementText(driver,MyAccountPageUI.MY_DASHBOAD_TITLE);
+    }
+
+    public Set<Cookie> getPageCookies(WebDriver driver) {
+        return Set.of();
     }
 }
 

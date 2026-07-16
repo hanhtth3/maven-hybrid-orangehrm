@@ -1,4 +1,4 @@
-package pageObjects.orangeHRM.EditNavigation;
+package pageObjects.orangeHRM.editNavigation;
 
 import org.openqa.selenium.WebDriver;
 

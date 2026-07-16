@@ -7,8 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.orangeHRM.EditNavigation.ContactDetailPageObject;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.ContactDetailPageObject;
 import pageObjects.orangeHRM.AddEmployeePageObject;
 import pageObjects.orangeHRM.DashboardPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
@@ -67,7 +66,7 @@ public class Level_06_Page_Manager_II extends BaseTest {
     private DashboardPageObject dashboardPage;
     private EmployeeListPageObject employeeListPage;
     private LoginPageObject loginPage;
-    private PersonalDetailPageObject personalDetailPage;
+    private pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject personalDetailPage;
     private ContactDetailPageObject contactDetailPage;
     private String employeeID;
     private String adminUser, adminPassword, employeeFirstName, employeeLastName;

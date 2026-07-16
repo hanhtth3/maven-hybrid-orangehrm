@@ -557,10 +557,10 @@ public class BasePage {
 
     //Orange HRM - dung rieng cho site nay
     //ORangeHRM
-    @Step("Waiting for Loading Spinner undisplay")
-    public boolean isLoadingSpinnerDisappear(WebDriver driver) {
-        return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
-    }
+//    @Step("Waiting for Loading Spinner undisplay")
+//    public boolean isLoadingSpinnerDisappear(WebDriver driver) {
+//        return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
+//    }
 
     @Step("Enter to {0} textbox by label with value {1}")
     public void enterToTextboxByLabel(WebDriver driver, String textboxLabel, String valueToSendkey) {
@@ -679,16 +679,16 @@ public class BasePage {
         waitElementClickable(driver, BasePageUI.CHECKBOX_BY_LABEL, labelName);
         clickToElement(driver, BasePageUI.CHECKBOX_BY_LABEL, labelName);
     }
-
-    public LoginPageObject clickLogoutOnTopMenu(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.USER_DROPDOWN);
-        clickToElement(driver, BasePageUI.USER_DROPDOWN);
-
-        waitElementClickable(driver, BasePageUI.LOGOUT_LINK);
-        clickToElement(driver, BasePageUI.LOGOUT_LINK);
-
-        return PageGenerator.getPage(LoginPageObject.class, driver);
-    }
+//
+//    public LoginPageObject clickLogoutOnTopMenu(WebDriver driver) {
+//        waitElementClickable(driver, BasePageUI.USER_DROPDOWN);
+//        clickToElement(driver, BasePageUI.USER_DROPDOWN);
+//
+//        waitElementClickable(driver, BasePageUI.LOGOUT_LINK);
+//        clickToElement(driver, BasePageUI.LOGOUT_LINK);
+//
+//        return PageGenerator.getPage(LoginPageObject.class, driver);
+//    }
 
     public void uploadFileByLabel(WebDriver driver, String labelName, String... fileNames) {
         WebElement uploadElement = getWebElement(driver, BasePageUI.DYNAMIC_UPLOAD_FILE_BY_LABEL, labelName);

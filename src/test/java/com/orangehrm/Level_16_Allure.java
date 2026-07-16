@@ -1,6 +1,5 @@
 package com.orangehrm;
 
-import com.aventstack.chaintest.plugins.ChainTestListener;
 import core.BaseTest;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
@@ -12,10 +11,9 @@ import org.testng.annotations.Test;
 import pageObjects.PageGenerator;
 import pageObjects.orangeHRM.AddEmployeePageObject;
 import pageObjects.orangeHRM.DashboardPageObject;
-import pageObjects.orangeHRM.EditNavigation.ContactDetailPageObject;
-import pageObjects.orangeHRM.EditNavigation.DependentsPageObject;
-import pageObjects.orangeHRM.EditNavigation.JobPageObject;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.ContactDetailPageObject;
+import pageObjects.orangeHRM.editNavigation.DependentsPageObject;
+import pageObjects.orangeHRM.editNavigation.JobPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
 
@@ -92,7 +90,7 @@ public class Level_16_Allure extends BaseTest {
     private DashboardPageObject dashboardPage;
     private EmployeeListPageObject employeeListPage;
     private LoginPageObject loginPage;
-    private PersonalDetailPageObject personalDetailPage;
+    private pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject personalDetailPage;
     private ContactDetailPageObject contactDetailPage;
     private JobPageObject jobPage;
     private DependentsPageObject dependentsPage;

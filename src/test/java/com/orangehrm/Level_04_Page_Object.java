@@ -7,7 +7,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.orangeHRM.EditNavigation.PersonalDetailPageObject;
 import pageObjects.orangeHRM.AddEmployeePageObject;
 import pageObjects.orangeHRM.DashboardPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
@@ -50,7 +49,7 @@ public class Level_04_Page_Object extends BaseTest {
         addEmployeePage.clickSaveButton();
         Assert.assertTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
 
-        personalDetailPage = new PersonalDetailPageObject(driver);
+        personalDetailPage = new pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject(driver);
         Assert.assertTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
         personalDetailPage.sleepInSecond(2);
 
@@ -68,7 +67,7 @@ public class Level_04_Page_Object extends BaseTest {
     private DashboardPageObject dashboardPage;
     private EmployeeListPageObject employeeListPage;
     private LoginPageObject loginPage;
-    private PersonalDetailPageObject personalDetailPage;
+    private pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject personalDetailPage;
     private String employeeID;
     private String adminUser, adminPassword, employeeFirstName, employeeLastName;
 }
