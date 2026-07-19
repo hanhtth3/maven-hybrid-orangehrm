@@ -1,4 +1,4 @@
-package testdata.orangehrm;
+package data.orangehrm;
 
 public class Employee_Data {
     public static Employee_Data getEmployeeData() {

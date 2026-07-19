@@ -1,4 +1,4 @@
-package testdata.orangehrm;
+package data.orangehrm;
 
 public class Employee {
     public static final String ADMIN_USERNAME = "Admin";

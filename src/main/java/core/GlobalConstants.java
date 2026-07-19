@@ -45,7 +45,7 @@ public class GlobalConstants {
     public static final String ALLURE_PATH = PROJECT_PATH + File.separator+ "htmlAllure"+ File.separator;
 
     // Data Test/ Environment
-    public static final String DATA_TEST_PATH = PROJECT_PATH + File.separator+ "dataTest"+ File.separator;
+    public static final String DATA_TEST_PATH = PROJECT_PATH + File.separator+ "dataFile"+ File.separator;
     public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + File.separator+ "environmentConfig"+ File.separator;
 
     public static final String JIRA_SITE_URL = "https://hanhtth3.atlassian.net/";

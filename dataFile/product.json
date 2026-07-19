@@ -1,0 +1,12 @@
+{
+  "Register": {
+    "fullname": "Automattion Test"
+  },
+  "Login":{
+    "username": "Automation",
+    "password": "Abc@123"
+  },
+  "firstname": "Automation",
+  "lastnamr": "Test",
+  "email": "autotest@gmail"
+}

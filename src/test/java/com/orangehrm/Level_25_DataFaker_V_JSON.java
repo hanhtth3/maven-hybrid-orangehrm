@@ -1,7 +1,7 @@
 package com.orangehrm;
 
 import core.BaseTest;
-import core.GlobalConstants;
+import data.model.Employee;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -12,25 +12,25 @@ import pageObjects.orangeHRM.AddEmployeePageObject;
 import pageObjects.orangeHRM.DashboardPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
-import data.orangehrm.Employee;
-import data.orangehrm.Employee_Data;
+import utilitiles.DataConfigNet;
 
-public class Level_25_DataFaker_IV_POJO extends BaseTest {
+public class Level_25_DataFaker_V_JSON extends BaseTest {
     @Parameters({"appUrl", "browser"})
     @BeforeClass
     public void beforeClass(String appURL, String browserName) {
         driver = getBrowserDriver(appURL, browserName);
         loginPage = PageGenerator.getPage(LoginPageObject.class, driver);
+        employeeData = Employee.getEmployee();
 
-        empoyeeData = Employee_Data.getEmployeeData();
+        adminUser = "Admin";
+        adminPassword = "admin123";
         employeeID = String.valueOf(getRandomNumber());
-        empoyeeData.setFirstName("Hanh");
-        empoyeeData.setLastName("Nguyen");
-        empoyeeData.setPassword("Abc@123");
-        empoyeeData.setUserName("hanh.nguyen");
 
-        loginPage.enterToTextboxByLabel(driver, "Username", GlobalConstants.ADMIN_ORANGE_USERNAME);
-        loginPage.enterToTextboxByLabel(driver, "Password", GlobalConstants.ADMIN_ORANGE_PASSWORD);
+        employeeUsername = employeeData.getUsername()+getRandomNumber();
+        employeePassword = employeeData.getPassword();
+
+        loginPage.enterToTextboxByLabel(driver, "Username", adminUser);
+        loginPage.enterToTextboxByLabel(driver, "Password", adminPassword);
         loginPage.clickToButtonByText(driver, "Login");
         dashboardPage = PageGenerator.getPage(DashboardPageObject.class, driver);
 
@@ -50,16 +50,16 @@ public class Level_25_DataFaker_IV_POJO extends BaseTest {
         addEmployeePage = PageGenerator.getPage(AddEmployeePageObject.class, driver);
         verifyTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
 
-        addEmployeePage.enterToTextboxByName(driver, "firstName", empoyeeData.getFirstName());
-        addEmployeePage.enterToTextboxByName(driver, "lastName", empoyeeData.getLastName());
-        addEmployeePage.enterToTextboxByLabel(driver, "EmployeeID", employeeID);
-        //employeeID = addEmployeePage.getTextboxValueByLabel(driver, "Employee Id");
+        addEmployeePage.enterToTextboxByName(driver, "firstName", employeeData.getFisrtName());
+        addEmployeePage.enterToTextboxByName(driver, "lastName", employeeData.getLastName());
+
+        employeeID = addEmployeePage.getTextboxValueByLabel(driver, "Employee Id");
 
         addEmployeePage.clickToCheckboxByLabel(driver,"Create Login Details");
 
-        addEmployeePage.enterToTextboxByLabel(driver, "Username", empoyeeData.getUserName());
-        addEmployeePage.enterToTextboxByLabel(driver, "Password", empoyeeData.getPassword());
-        addEmployeePage.enterToTextboxByLabel(driver, "Confirm Password", empoyeeData.getPassword());
+        addEmployeePage.enterToTextboxByLabel(driver, "Username", employeeUsername);
+        addEmployeePage.enterToTextboxByLabel(driver, "Password", employeePassword);
+        addEmployeePage.enterToTextboxByLabel(driver, "Confirm Password", employeePassword);
 
         addEmployeePage.clickToButtonByText(driver, "Save");
         personalDetailPage = PageGenerator.getPage(pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject.class, driver);
@@ -69,8 +69,8 @@ public class Level_25_DataFaker_IV_POJO extends BaseTest {
         verifyTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
         personalDetailPage.sleepInSecond(5);
 
-        verifyEquals(personalDetailPage.getTextboxValueByName(driver, "firstName"), Employee.FIRST_NAME);
-        verifyEquals(personalDetailPage.getTextboxValueByName(driver, "lastName"), Employee.LAST_NAME);
+        verifyEquals(personalDetailPage.getTextboxValueByName(driver, "firstName"), employeeData.getFisrtName());
+        verifyEquals(personalDetailPage.getTextboxValueByName(driver, "lastName"), employeeData.getLastName());
         verifyEquals(personalDetailPage.getTextboxValueByLabel(driver, "Employee Id"), employeeID);
 
     }
@@ -81,10 +81,12 @@ public class Level_25_DataFaker_IV_POJO extends BaseTest {
 
     private WebDriver driver;
     private LoginPageObject loginPage;
-    private Employee_Data empoyeeData;
     private DashboardPageObject dashboardPage;
     private EmployeeListPageObject employeeListPage;
     private AddEmployeePageObject addEmployeePage;
     private pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject personalDetailPage;
-    private String employeeID;
+    private Employee employeeData;
+    private String employeeID, adminPassword,adminUser;
+    private String employeeUsername, employeePassword;
+
 }
