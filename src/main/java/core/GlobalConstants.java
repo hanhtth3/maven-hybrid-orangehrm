@@ -21,6 +21,9 @@ public class GlobalConstants {
     public static final String ADMIN_USERNAME = "user01";
     public static final String ADMIN_PASSWORD = "guru99com";
 
+    public static final String ADMIN_ORANGE_USERNAME = "Admin";
+    public static final String ADMIN_ORANGE_PASSWORD = "admin123";
+
     // Wait Infor
     public static final int SHORT_TIMEOUT = 5;
     public static final int LONG_TIMEOUT = 30;

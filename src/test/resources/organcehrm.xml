@@ -3,23 +3,22 @@
 <suite name="OrangeHRM - UI Automation Test" verbose="1" >
     <listeners>
         <listener class-name="core.MethodListener"></listener>
-<!--        <listener class-name="jiraConfigs.JiraListener"></listener>-->
-<!--        <listener class-name="reportConfig.ExtentTestListener"></listener>-->
-<!--        <listener class-name="reportConfig.ChainTestReport"></listener>-->
-<!--       <listener class-name="reportConfig.AllureTestListener"></listener>-->
     </listeners>
     <parameter name="appUrl" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"></parameter>
-<!--    <test name="Run on FIREFOX browser" >-->
-<!--        <parameter name="browser" value="Firefox"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="com.orangehrm.Level_23_Browser_Config" />-->
-<!--        </classes>-->
-<!--    </test>-->
 
-    <test name="Run on Chrome Headless browser" >
-        <parameter name="browser" value="head_chrome"></parameter>
+    <test name="Run on Chrome browser" >
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="adminUserName" value="Admin"></parameter>
+        <parameter name="passwordUserName" value="admin123"></parameter>
+        <parameter name="employeeFirstName" value="Hanh"></parameter>
+        <parameter name="employeeLastName" value="Nguyen"></parameter>
+        <parameter name="employeeUsername" value="hanh.nguyen"></parameter>
+        <parameter name="employeePassword" value="Test@123#"></parameter>
+        <parameter name="employeeDOB" value="1988-12-12"></parameter>
+        <parameter name="employeeGenfer" value="Female"></parameter>
+        <parameter name="employeeMaritalStatus" value="Single"></parameter>
         <classes>
-            <class name="com.orangehrm.Level_23_Browser_Config" />
+            <class name="com.orangehrm.Level_25_DataFaker_II_TestNG" ></class>
         </classes>
     </test>
 </suite>
