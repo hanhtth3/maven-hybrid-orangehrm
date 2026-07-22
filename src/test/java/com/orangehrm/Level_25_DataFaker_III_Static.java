@@ -77,5 +77,5 @@ public class Level_25_DataFaker_III_Static extends BaseTest {
     private EmployeeListPageObject employeeListPage;
     private AddEmployeePageObject addEmployeePage;
     private pageObjects.orangeHRM.editNavigation.PersonalDetailPageObject personalDetailPage;
-    private String employeeID,
+    private String employeeID;
 }

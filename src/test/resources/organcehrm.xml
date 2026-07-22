@@ -8,17 +8,9 @@
 
     <test name="Run on Chrome browser" >
         <parameter name="browser" value="chrome"></parameter>
-        <parameter name="adminUserName" value="Admin"></parameter>
-        <parameter name="passwordUserName" value="admin123"></parameter>
-        <parameter name="employeeFirstName" value="Hanh"></parameter>
-        <parameter name="employeeLastName" value="Nguyen"></parameter>
-        <parameter name="employeeUsername" value="hanh.nguyen"></parameter>
-        <parameter name="employeePassword" value="Test@123#"></parameter>
-        <parameter name="employeeDOB" value="1988-12-12"></parameter>
-        <parameter name="employeeGenfer" value="Female"></parameter>
-        <parameter name="employeeMaritalStatus" value="Single"></parameter>
+
         <classes>
-            <class name="com.orangehrm.Level_25_DataFaker_II_TestNG" ></class>
+            <class name="com.orangehrm.Level_25_DataFaker_VI_Excell" ></class>
         </classes>
     </test>
 </suite>
