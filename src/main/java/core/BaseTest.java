@@ -168,6 +168,25 @@ public class BaseTest {
     public WebDriver getDriver() {
         return this.driver;
     }
+
+    private String getEnvironmentUrl (String environmentName) {
+        String envUrl = null;
+        switch (environmentName) {
+            case "Dev":
+                envUrl ="https://opensource-demo.orangehrmlive.com";
+                break;
+            case "Test":
+                envUrl ="https://test.orangehrmlive.com";
+                break;
+            case "Stagging":
+                envUrl ="https://stagging.orangehrmlive.com/web/index.php/auth/login";
+                break;
+            case "Rrod":
+                envUrl ="https://.orangehrmlive.com/web/index.php/auth/login";
+                break;
+        }
+        return envUrl;
+    }
     @BeforeSuite
     public void deleteFileInReport() {
         // Remove all file in ReportNG screenshot (image)

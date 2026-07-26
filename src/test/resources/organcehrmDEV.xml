@@ -4,8 +4,8 @@
     <listeners>
         <listener class-name="core.MethodListener"></listener>
     </listeners>
-<!--    <parameter name="appUrl" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"></parameter>-->
-    <parameter name="server" value="DEV"></parameter>
+    <parameter name="appUrl" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"></parameter>
+
     <test name="Run on Chrome browser" >
         <parameter name="browser" value="chrome"></parameter>
 
