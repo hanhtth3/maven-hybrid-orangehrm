@@ -12,25 +12,28 @@ import pageObjects.orangeHRM.DashboardPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
 import utilitiles.ExcelConfig;
+import utilitiles.PropertiesConfig;
 
 public class Level_26_Environment extends BaseTest {
-    @Parameters({"appUrl", "browser"})
+    @Parameters({"server", "browser"})
     @BeforeClass
-    public void beforeClass(String appURL, String browserName) {
-        driver = getBrowserDriver(appURL, browserName);
+    public void beforeClass(String server, String browserName) {
+        propertiesConfig = new PropertiesConfig(server);
+        driver = getBrowserDriver(propertiesConfig.getApplicationUrl(), browserName);
+
         loginPage = PageGenerator.getPage(LoginPageObject.class, driver);
         excellConfig= ExcelConfig.getExcelData();
         excellConfig.switchToSheet("employee");
 
-        adminUser = "Admin";
-        adminPassword = "admin123";
+//        adminUser = "Admin";
+//        adminPassword = "admin123";
         employeeID = String.valueOf(getRandomNumber());
 
         employeeUsername = excellConfig.getCellData("UserName",2)+getRandomNumber();
         employeePassword = excellConfig.getCellData("Password",2)+getRandomNumber()+"@gmail.com";
 
-        loginPage.enterToTextboxByLabel(driver, "Username", adminUser);
-        loginPage.enterToTextboxByLabel(driver, "Password", adminPassword);
+        loginPage.enterToTextboxByLabel(driver, "Username", propertiesConfig.getApplicationUserName());
+        loginPage.enterToTextboxByLabel(driver, "Password", propertiesConfig.getApplicationPassword());
         loginPage.clickToButtonByText(driver, "Login");
         dashboardPage = PageGenerator.getPage(DashboardPageObject.class, driver);
 
@@ -88,5 +91,6 @@ public class Level_26_Environment extends BaseTest {
     private String employeeID, adminPassword,adminUser;
     private String employeeUsername, employeePassword;
     private ExcelConfig excellConfig;
+    private PropertiesConfig propertiesConfig;
 
 }

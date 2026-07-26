@@ -186,7 +186,7 @@
                     <version>3.5.3</version>
                     <configuration>
                         <suiteXmlFiles>
-                            <suiteXmlFile>src/test/resources/runOnDEV.xml</suiteXmlFile>
+                            <suiteXmlFile>src/test/resources/organcehrmDEV.xml</suiteXmlFile>
                         </suiteXmlFiles>
                     </configuration>
                 </plugin>
