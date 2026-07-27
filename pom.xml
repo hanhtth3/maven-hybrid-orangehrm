@@ -141,6 +141,13 @@
             <version>5.5.1</version>
             <scope>compile</scope>
         </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.12</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <!-- Compiler/ Run Test -->
     <build>
@@ -186,7 +193,7 @@
                     <version>3.5.3</version>
                     <configuration>
                         <suiteXmlFiles>
-                            <suiteXmlFile>src/test/resources/organcehrmDEV.xml</suiteXmlFile>
+                            <suiteXmlFile>src/test/resources/organcehrm.xml</suiteXmlFile>
                         </suiteXmlFiles>
                     </configuration>
                 </plugin>
