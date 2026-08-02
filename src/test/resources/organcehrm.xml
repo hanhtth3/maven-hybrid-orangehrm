@@ -8,9 +8,21 @@
     <parameter name="server" value="DEV"></parameter>
     <test name="Run on Chrome browser" >
         <parameter name="browser" value="chrome"></parameter>
-
+        <parameter name="osName" value="windown"></parameter>
+        <parameter name="ipAddress" value="192.168.1.28"></parameter>
+        <parameter name="port" value="444"></parameter>
         <classes>
-            <class name="com.orangehrm.Level_25_DataFaker_VI_Excell" ></class>
+            <class name="com.orangehrm.Level_27_SeleniumGRID"/>
         </classes>
     </test>
+
+    <test name="Run on Chrome edge" >
+        <parameter name="browser" value="egde"></parameter>
+        <parameter name="osName" value="windown"></parameter>
+        <parameter name="ipAddress" value="192.168.1.28"></parameter>
+        <parameter name="port" value="444"></parameter>
+        <classes>
+            <class name="com.orangehrm.Level_27_SeleniumGRID"/>
+        </classes>
+   </test>
 </suite>
