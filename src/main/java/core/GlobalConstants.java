@@ -55,4 +55,9 @@ public class GlobalConstants {
     public static final String JIRA_API_KEY = "";
 
     public static String JIRA_PROJECT_KEY="AUTOMATION" ;
+
+    //BrowserStack
+    public static String BROWSER_STACK_USERNAME="tonthihaihanh_oZI9QU";
+    public static String BROWSER_STACK_AUTOMATE_KEY="X98fx3fexvg5MfPst7nN";
+    public static String BROWSER_STACK_URL="https://" + BROWSER_STACK_USERNAME+":" + BROWSER_STACK_AUTOMATE_KEY + "@huh-cloud,browserstack.com/wd/hud";
 }

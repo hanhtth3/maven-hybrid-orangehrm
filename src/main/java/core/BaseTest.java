@@ -1,5 +1,7 @@
 package core;
 
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -22,6 +24,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Random;
 
 import static org.openqa.selenium.remote.Browser.*;
@@ -111,6 +114,79 @@ public class BaseTest {
 
         try {
             driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/", ipAddress, portNumber)), capability);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }protected WebDriver getBrowserDriver(String browserName, String url, String osName, String ipAddress, String portNumber) {
+        DesiredCapabilities capability = new DesiredCapabilities();
+        Platform platform = null;
+
+        if (osName.toLowerCase().contains("windows")) {
+            platform = Platform.WINDOWS;
+        } else {
+            platform = Platform.MAC;
+        }
+
+        switch (browserName) {
+            case "firefox":
+                capability.setBrowserName("firefox");
+                capability.setPlatform(platform);
+
+                FirefoxOptions fOptions = new FirefoxOptions();
+                fOptions.merge(capability);
+                break;
+            case "chrome":
+                capability.setBrowserName("chrome");
+                capability.setPlatform(platform);
+
+                ChromeOptions cOptions = new ChromeOptions();
+                cOptions.merge(capability);
+                break;
+            case "edge":
+                capability.setBrowserName("MicrosoftEdge");
+                capability.setPlatform(platform);
+
+                EdgeOptions eOptions = new EdgeOptions();
+                eOptions.merge(capability);
+                break;
+            default:
+                throw new RuntimeException("Browser is not valid!");
+        }
+
+        try {
+            driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/", ipAddress, portNumber)), capability);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+    //Cloud: BrowserStack
+    protected WebDriver getBrowserDriverBrowserStack(String url,String browserName, String osName, String browserVersion, String osVersion) {
+        MutableCapabilities capabilities = new MutableCapabilities();
+        HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
+
+        capabilities.setCapability("browserName", browserName);
+
+        bstackOptions.put("os", osName);
+        bstackOptions.put("osVersion", browserVersion);
+        bstackOptions.put("browserVersion", "148.0");
+        bstackOptions.put("userName", GlobalConstants.BROWSER_STACK_USERNAME);
+        bstackOptions.put("accessKey", GlobalConstants.BROWSER_STACK_AUTOMATE_KEY);
+        bstackOptions.put("consoleLogs", "info");
+        bstackOptions.put("seleniumVersion", "4.29.0");
+        capabilities.setCapability("bstack:options", bstackOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL)), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
