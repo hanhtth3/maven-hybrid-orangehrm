@@ -13,17 +13,19 @@ import pageObjects.orangeHRM.LoginPageObject;
 import utilitiles.ExcelConfig;
 import utilitiles.IEnvironment;
 
-public class Level_28_BrowserStack extends BaseTest {
+public class Level_29_SauceLab extends BaseTest {
     IEnvironment environment;
 
-    @Parameters({"server", "browserName","osName","browserVersion","osVersion"})
+    @Parameters({"server", "browserName","osName","browserVersion"})
     @BeforeClass
-    public void beforeClass(String server, String browserName,String osName,String browserVersion,String osVersion) {
+    public void beforeClass(String server, String browserName,String osName,String browserVersion) {
         ConfigFactory.setProperty("environment", server);
         environment = ConfigFactory.create(IEnvironment.class);
 
-        driver = getBrowserDriverBrowserStack(environment.appUrl(), browserName,osName,browserVersion,osVersion);
+        this.browserName = browserName;
+        this.osName = osName
 
+        driver = getBrowserDriverSaucelab(environment.appUrl(), browserName,osName,browserVersion);.
         loginPage = PageGenerator.getPage(LoginPageObject.class, driver);
         excellConfig= ExcelConfig.getExcelData();
         excellConfig.switchToSheet("employee");
@@ -57,6 +59,6 @@ public class Level_28_BrowserStack extends BaseTest {
     private LoginPageObject loginPage;
     private DashboardPageObject dashboardPage;
     private String employeeID, adminPassword,adminUser;
-    private String employeeUsername, employeePassword;
+    private String employeeUsername, employeePassword, browserName, osName;
     private ExcelConfig excellConfig;
 }

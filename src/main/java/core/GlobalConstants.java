@@ -60,4 +60,9 @@ public class GlobalConstants {
     public static String BROWSER_STACK_USERNAME="tonthihaihanh_oZI9QU";
     public static String BROWSER_STACK_AUTOMATE_KEY="X98fx3fexvg5MfPst7nN";
     public static String BROWSER_STACK_URL="https://" + BROWSER_STACK_USERNAME+":" + BROWSER_STACK_AUTOMATE_KEY + "@huh-cloud,browserstack.com/wd/hud";
+
+    //SauceLabs
+    public static String SAUCE_USERNAME="oauth-hanhtth3-26882";
+    public static String SAUCE_AUTOMATE_KEY="4fa4e9b8-daaa-45ce-acf3-690377360372";
+    public static String SAUCE_URL="https://" + SAUCE_USERNAME+ ":" + SAUCE_AUTOMATE_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
 }
