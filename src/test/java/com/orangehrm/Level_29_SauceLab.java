@@ -23,9 +23,9 @@ public class Level_29_SauceLab extends BaseTest {
         environment = ConfigFactory.create(IEnvironment.class);
 
         this.browserName = browserName;
-        this.osName = osName
+        this.osName = osName;
+        driver = getBrowserDriverSaucelab(environment.appUrl(), browserName,osName,browserVersion);
 
-        driver = getBrowserDriverSaucelab(environment.appUrl(), browserName,osName,browserVersion);.
         loginPage = PageGenerator.getPage(LoginPageObject.class, driver);
         excellConfig= ExcelConfig.getExcelData();
         excellConfig.switchToSheet("employee");
