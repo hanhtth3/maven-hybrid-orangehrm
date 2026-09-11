@@ -65,4 +65,9 @@ public class GlobalConstants {
     public static String SAUCE_USERNAME="oauth-hanhtth3-26882";
     public static String SAUCE_AUTOMATE_KEY="4fa4e9b8-daaa-45ce-acf3-690377360372";
     public static String SAUCE_URL="https://" + SAUCE_USERNAME+ ":" + SAUCE_AUTOMATE_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+
+    //LamdaTest
+    public static String LAMDA_USERNAME="hanhtth3";
+    public static String LAMDA_AUTOMATE_KEY="LT_PkT8ZJIcNhtFN8VUyaWphRVv8vYgF8Jb0OStsaEt44CCWPr";
+    public static String LAMDA_URL="https://hub.lamdatest.com/wd/hub";
 }

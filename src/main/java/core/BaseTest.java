@@ -1,6 +1,8 @@
 package core;
 
-import org.openqa.selenium.Capabilities;
+import browserFactory.BrowserFactory.ChromeBrowserManager;
+import browserFactory.BrowserFactory.FirefoxBrowserManager;
+import browserFactory.BrowserFactory.IEBrowserManager;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -23,12 +25,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
-
-import static org.openqa.selenium.remote.Browser.*;
 
 public class BaseTest {
     private WebDriver driver;
@@ -239,6 +240,59 @@ public class BaseTest {
 
         try {
             driver = new RemoteWebDriver(new URL(GlobalConstants.SAUCE_URL), capability);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+
+    protected WebDriver getBrowserDriverLambda(String url, String osName, String browserName, String browserVersion) {
+        MutableCapabilities capability = null;
+
+        switch (browserName) {
+            case "firefox":
+                driver = new FirefoxBrowserManager().getDriver();
+                break;
+            case "chrome":
+                driver = new ChromeBrowserManager().getDriver();
+                break;
+            case "edge":
+                driver = new IEBrowserManager().getDriver();
+                break;
+            case "safari":
+                SafariOptions sOptions = new SafariOptions();
+                sOptions.setPlatformName(osName);
+                sOptions.setBrowserVersion(browserVersion);
+                capability = sOptions;
+                break;
+            default:
+                throw new RuntimeException("Browser is not valid!");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+
+        HashMap<String, Object> lambdaOptions = new HashMap<String, Object>();
+        lambdaOptions.put("username", GlobalConstants.LAMDA_USERNAME);
+        lambdaOptions.put("accessKey", GlobalConstants.LAMDA_AUTOMATE_KEY);
+        lambdaOptions.put("visual", true);
+        lambdaOptions.put("video", true);
+        lambdaOptions.put("build", "nopcommerce-build");
+        lambdaOptions.put("project", "NopCommerce - UI Automation Testing");
+        lambdaOptions.put("name", "Run on " + osName + " | " + browserName + " | " + browserVersion + " | " + formater.format(calendar.getTime()));
+        lambdaOptions.put("w3c", true);
+        lambdaOptions.put("selenium_version", "4.29.0");
+        lambdaOptions.put("resolution", "1920x1080");
+        lambdaOptions.put("plugin", "java-testNG");
+
+        capability.setCapability("LT:Options", lambdaOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.LAMDA_URL), capability);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

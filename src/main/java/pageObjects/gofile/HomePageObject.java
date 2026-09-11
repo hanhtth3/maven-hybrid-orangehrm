@@ -1,13 +1,8 @@
 package pageObjects.gofile;
 
 import core.BasePage;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pageUIs.gofile.HomePageUI;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomePageObject extends BasePage {
     private WebDriver driver;

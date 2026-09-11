@@ -5,7 +5,6 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
 import pageUIs.techpanda.LoginPageUI;
-import pageUIs.techpanda.MyAccountPageUI;
 
 import java.util.Set;
 

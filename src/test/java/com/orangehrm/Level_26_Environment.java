@@ -1,7 +1,6 @@
 package com.orangehrm;
 
 import core.BaseTest;
-import freemarker.core.Environment;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;

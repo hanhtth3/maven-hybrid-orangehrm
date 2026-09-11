@@ -12,7 +12,6 @@ import pageObjects.orangeHRM.AddEmployeePageObject;
 import pageObjects.orangeHRM.DashboardPageObject;
 import pageObjects.orangeHRM.EmployeeListPageObject;
 import pageObjects.orangeHRM.LoginPageObject;
-import utilitiles.DataConfigNet;
 
 public class Level_25_DataFaker_V_JSON extends BaseTest {
     @Parameters({"appUrl", "browser"})

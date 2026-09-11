@@ -3,7 +3,6 @@ package pageObjects.saucelab;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
 import core.BasePage;
-import pageUIs.BasePageUI;
 import pageUIs.saucelab.LoginPageUI;
 
 public class LoginPO extends BasePage {

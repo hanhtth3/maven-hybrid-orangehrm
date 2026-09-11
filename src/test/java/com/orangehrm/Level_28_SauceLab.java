@@ -13,16 +13,18 @@ import pageObjects.orangeHRM.LoginPageObject;
 import utilitiles.ExcelConfig;
 import utilitiles.IEnvironment;
 
-public class Level_27_SeleniumGRID extends BaseTest {
+public class Level_28_SauceLab extends BaseTest {
     IEnvironment environment;
 
-    @Parameters({"server", "browser","osName","ipAddress","port"})
+    @Parameters({"server", "browserName","osName","browserVersion"})
     @BeforeClass
-    public void beforeClass(String server, String browserName,String osName,String ipAddress,String port) {
+    public void beforeClass(String server, String browserName,String osName,String browserVersion) {
         ConfigFactory.setProperty("environment", server);
-
         environment = ConfigFactory.create(IEnvironment.class);
-        driver = getBrowserDriver(environment.appUrl(), browserName);
+
+        this.browserName = browserName;
+        this.osName = osName;
+        driver = getBrowserDriverSaucelab(environment.appUrl(), browserName,osName,browserVersion);
 
         loginPage = PageGenerator.getPage(LoginPageObject.class, driver);
         excellConfig= ExcelConfig.getExcelData();
@@ -57,6 +59,6 @@ public class Level_27_SeleniumGRID extends BaseTest {
     private LoginPageObject loginPage;
     private DashboardPageObject dashboardPage;
     private String employeeID, adminPassword,adminUser;
-    private String employeeUsername, employeePassword;
+    private String employeeUsername, employeePassword, browserName, osName;
     private ExcelConfig excellConfig;
 }

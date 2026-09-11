@@ -2,7 +2,6 @@ package pageObjects;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageObjects.techpanda.LoginPO;
 
 import java.lang.reflect.Constructor;
 

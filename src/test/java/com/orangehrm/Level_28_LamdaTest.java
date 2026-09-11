@@ -13,7 +13,7 @@ import pageObjects.orangeHRM.LoginPageObject;
 import utilitiles.ExcelConfig;
 import utilitiles.IEnvironment;
 
-public class Level_29_SauceLab extends BaseTest {
+public class Level_28_LamdaTest extends BaseTest {
     IEnvironment environment;
 
     @Parameters({"server", "browserName","osName","browserVersion"})
@@ -24,7 +24,7 @@ public class Level_29_SauceLab extends BaseTest {
 
         this.browserName = browserName;
         this.osName = osName;
-        driver = getBrowserDriverSaucelab(environment.appUrl(), browserName,osName,browserVersion);
+        driver = getBrowserDriverLambda(environment.appUrl(), browserName,osName,browserVersion);
 
         loginPage = PageGenerator.getPage(LoginPageObject.class, driver);
         excellConfig= ExcelConfig.getExcelData();

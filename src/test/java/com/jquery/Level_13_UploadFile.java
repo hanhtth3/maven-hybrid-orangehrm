@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 import pageObjects.PageGenerator;
 import pageObjects.jquery.HomePageObject;
 
-import java.util.List;
-
 public class Level_13_UploadFile extends BaseTest {
 
     @Parameters ({"url","browser"})

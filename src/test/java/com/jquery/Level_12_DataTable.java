@@ -9,13 +9,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.PageGenerator;
 import pageObjects.jquery.HomePageObject;
-import pageObjects.openCart.admin.AdminCustomerPO;
-import pageObjects.openCart.admin.AdminDashboardPO;
-import pageObjects.openCart.admin.AdminLoginPO;
-import pageObjects.openCart.user.UserHomePO;
-import pageObjects.openCart.user.UserLoginPO;
-import pageObjects.openCart.user.UserMyAccountPO;
-import pageObjects.openCart.user.UserRegisterPO;
 
 import java.util.List;
 
